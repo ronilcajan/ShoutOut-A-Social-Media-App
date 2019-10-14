@@ -1,0 +1,164 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+body {
+	background-image: url("../../images/logo.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+	background-color: rgb(236, 62, 155);
+}
+main {
+	position: relative;
+	height: 600px;
+	display: flex;
+	align-items: stretch;
+}
+.left-side {
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.right-side {
+	flex: 1;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tags {
+	color: white;
+}
+.tag {
+	list-style: none;
+}
+.tag li {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 20px 0;
+}
+.clicks {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+}
+.clicks-1 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.logo-container {
+	flex: 1;
+}
+.click-b {
+	flex: 1;
+}
+/* .select {
+	margin-left: 70%;
+} */
+.logo {
+	width: 50px;
+	height: 50px;
+}
+button.select {
+	margin-left: 68%;
+	padding: 10px;
+	border-radius: 10px;
+	color: white;
+	background-color: #ff1493;
+	border: 2px solid gray;
+	font-size: 10px;
+	font-weight: bold;
+	transition: all 1s;
+	cursor: pointer;
+}
+button.select:hover {
+	color: #ff1493;
+	background-color: white;
+	border: 2px solid #ff1493;
+}
+h2,
+h3 {
+	font-weight: 900;
+	text-justify: auto;
+}
+h2 {
+	font-size: 30px;
+}
+h3 {
+	font-size: 20px;
+}
+.click-btn {
+	margin: 0;
+}
+.btn-container {
+	display: flex;
+	flex-direction: column;
+}
+.signup,
+.login {
+	height: 40px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	font-weight: bold;
+	cursor: pointer;
+}
+.signup {
+	border: 2px solid #ec3e9b;
+	color: #ec3e9b;
+}
+.login {
+	border: 2px solid white;
+	color: white;
+	background-color: #ec3e9b;
+	transition: all 1s;
+}
+.signup:hover {
+	border: 2px solid white;
+	color: white;
+	background-color: #ec3e9b;
+	transition: all 1s;
+}
+.login:hover {
+	border: 2px solid #ec3e9b;
+	color: #ec3e9b;
+	background-color: white;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	background: white;
+	border-top: 1px solid rgb(212, 205, 205);
+}
+
+.links {
+	width: 30%;
+	margin:auto;
+}
+.links-1 {
+	list-style-type: none;
+	font-size: 12px;
+	color: gray;
+	display: flex;
+	margin-top:5%;
+	justify-content: space-around;
+}
+.links-1 li a {
+	text-decoration: none;
+	color: gray;
+}
+.links-1 li a:hover {
+	color: #ec3e9b;
+}
+.fa-search,
+.fa-comments,
+.fa-user {
+	margin: 10px 15px 0 0;
+	font-size: 30px;
+}
