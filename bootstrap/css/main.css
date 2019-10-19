@@ -1,0 +1,180 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	background-color: white;
+}
+
+.main-container {
+	display: flex;
+	min-height: 100%;
+}
+header {
+	flex: 0.8;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 800px;
+}
+
+header nav ul.nav-here {
+	list-style: none;
+	margin: 30px;
+	margin-left: -40px;
+	margin-bottom: 40px;
+}
+.nav-here li {
+	font-size: 20px;
+	font-weight: 800;
+	margin: 20px;
+}
+.fa-home,
+.fa-user,
+.fa-outdent {
+	font-size: 30px;
+	margin: 10px;
+}
+.nav-here li a {
+	color: black;
+	text-decoration: none;
+	padding: 20px 0px;
+	padding-right: 35px;
+	padding-left: 15px;
+	border-radius: 30px;
+	transition: all 0.3s;
+}
+.nav-here li a:hover {
+	color: #ec3e9b;
+	padding: 20px 0px;
+	padding-right: 35px;
+	padding-left: 15px;
+	background-color: #e6ecf0;
+	border-radius: 30px;
+}
+a.shout-btn {
+	text-decoration: none;
+	color: white;
+	background-color: #ec3e9b;
+	padding: 20px 50px;
+	margin-top: 10px;
+	border-radius: 30px;
+	font-weight: 800;
+	transition: all 1s;
+}
+a.shout-btn:hover {
+	background-color: #e67db5;
+}
+main {
+	flex: 1.6;
+	border-right: 1px solid #e6ecf0;
+	border-left: 1px solid #e6ecf0;
+	background-color: white;
+}
+.home {
+	min-width: 598px;
+	display: flex;
+	justify-content: stretch;
+	cursor: pointer;
+	border-bottom: 1px solid #e6ecf0;
+	background-color: white;
+}
+.home-content {
+	display: flex;
+	align-items: stretch;
+	position: fixed;
+}
+div.home p {
+	font-weight: 900;
+	margin: 10px;
+	font-size: 20px;
+}
+.content {
+	width: 100%;
+	margin: 0px 20px;
+	margin-top: 60px;
+	display: flex;
+}
+.submit-btn {
+	display: flex;
+	justify-content: space-between;
+}
+button.btn-danger {
+	background-color: #ec3e9b;
+	font-weight: 700;
+}
+.logo-img {
+	margin-top: -30px;
+	margin-left: -10px;
+}
+textarea {
+	width: 500px;
+	height: 50px;
+	font-size: 20px;
+	resize: none;
+	border: none;
+	padding: 10px;
+	color: #444;
+}
+textarea:hover {
+	border: none;
+	padding: 10px;
+}
+.noscroll {
+	overflow: hidden;
+}
+.hiddenDiv {
+	display: none;
+	white-space: pre-wrap;
+	width: 520px;
+	min-height: 50px;
+	word-wrap: break-word;
+}
+.lbr {
+	line-height: 3px;
+}
+.people-shout {
+	border-top: 10px solid #e6ecf0;
+}
+.sidebar {
+	flex: 1.2;
+	background-color: white;
+}
+.search {
+	height: 50px;
+	width: 100%;
+	z-index: 1;
+	background-color: white;
+}
+.search-input {
+	background-color: #e6ecf0;
+	border-radius: 30px;
+	margin: 5px 40px;
+	width: 370px;
+}
+.trending {
+	margin: 50px 40px;
+	margin-top: 70px;
+}
+.trending ul.list-group li {
+	background-color: #f5f8fa;
+}
+.to-follow {
+	margin: 10px 40px;
+}
+.to-follow ul.list-group li {
+	background-color: #f5f8fa;
+}
+.extra-links {
+	margin: 40px;
+	display: flex;
+	justify-content: center;
+}
+.links {
+	list-style: none;
+}

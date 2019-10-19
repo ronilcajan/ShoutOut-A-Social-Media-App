@@ -114,6 +114,7 @@ class Controller extends CI_Controller {
         
     }
 
+    //function to check if user is in session
     public function check_auth(){
         if(!$this->session->userdata('logged_in')){
             redirect('login');
@@ -121,8 +122,10 @@ class Controller extends CI_Controller {
     }
     
     public function profile(){
+
         $this->check_auth('profile');
-        $this->load->view('templates/header-login-signup');
+
+        $this->load->view('templates/main');
         $this->load->view('user_profile');
         $this->load->view('templates/footer');
     }
