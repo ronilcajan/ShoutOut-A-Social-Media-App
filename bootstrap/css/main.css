@@ -29,6 +29,27 @@ header nav ul.nav-here {
 	margin-left: -40px;
 	margin-bottom: 40px;
 }
+img.logo-image {
+	margin-left: 23px;
+}
+li button.logout-btn {
+	border: none;
+	background-color: white;
+	font-size: 20px;
+	font-weight: 800;
+	padding: 6px 14px;
+	padding-right: 25px;
+}
+li button.logout-btn:hover {
+	border: none;
+	background-color: #e6ecf0;
+	font-size: 20px;
+	font-weight: 800;
+	padding: 6px 14px;
+	padding-right: 25px;
+	border-radius: 30px;
+	color: #ec3e9b;
+}
 .nav-here li {
 	font-size: 20px;
 	font-weight: 800;
@@ -57,17 +78,19 @@ header nav ul.nav-here {
 	background-color: #e6ecf0;
 	border-radius: 30px;
 }
-a.shout-btn {
+
+button.shout-btn {
 	text-decoration: none;
 	color: white;
-	background-color: #ec3e9b;
+	background-color: #e081b4;
 	padding: 20px 50px;
 	margin-top: 10px;
 	border-radius: 30px;
 	font-weight: 800;
 	transition: all 1s;
+	border: none;
 }
-a.shout-btn:hover {
+button.shout-btn:hover {
 	background-color: #e67db5;
 }
 main {
@@ -83,6 +106,9 @@ main {
 	cursor: pointer;
 	border-bottom: 1px solid #e6ecf0;
 	background-color: white;
+}
+.home:hover {
+	background-color: rgb(203, 207, 209);
 }
 .home-content {
 	display: flex;
@@ -125,6 +151,9 @@ textarea:hover {
 	border: none;
 	padding: 10px;
 }
+textarea.modal-shout {
+	width: 400px;
+}
 .noscroll {
 	overflow: hidden;
 }
@@ -141,6 +170,64 @@ textarea:hover {
 .people-shout {
 	border-top: 10px solid #e6ecf0;
 }
+
+.user-post div.form-group {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #e6ecf0;
+	flex-wrap: wrap;
+	cursor: pointer;
+}
+.name-post {
+	font-weight: 800;
+}
+.user-post div.form-group > *:nth-child(4) {
+	width: 100%;
+	margin-left: 15%;
+	margin-bottom: 10px;
+}
+.user-post div.form-group > *:nth-child(5) {
+	width: 100%;
+	margin-left: 14.5%;
+	margin-bottom: 10px;
+	display: flex;
+}
+.user-post div.form-group > *:last-child {
+	width: 100%;
+	margin-left: 14.5%;
+	margin-bottom: 10px;
+	display: flex;
+}
+.user-post div.form-group .action button {
+	font-weight: 800;
+	color: grey;
+	border: none;
+	background-color: #ffffff;
+}
+.user-post div.form-group .action button:hover {
+	color: rgb(116, 116, 197);
+	background-color: #ffffff;
+}
+.comment-box {
+	width: 80%;
+	padding: 10px;
+}
+.okay-btn {
+	border: none;
+	color: white;
+	background-color: rgb(146, 199, 230);
+	padding: 10px 10px;
+	border-radius: 40px;
+	margin: 0px 5px;
+	font-size: 13px;
+}
+.okay-btn:hover {
+	background-color: rgb(103, 178, 221);
+}
+img.profile-img {
+	border: 1px solid #e6ecf0;
+}
+
 .sidebar {
 	flex: 1.2;
 	background-color: white;
@@ -177,4 +264,13 @@ textarea:hover {
 }
 .links {
 	list-style: none;
+}
+
+/* ================ Profile ===================  */
+
+.fa-arrow-left {
+	color: #ec3e9b;
+	font-size: 20px;
+	margin-top: 15px;
+	margin-left: 10px;
 }

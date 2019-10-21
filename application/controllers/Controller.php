@@ -65,10 +65,10 @@ class Controller extends CI_Controller {
                     );
 
                     $result = $this->my_model->add_guest($data);
+                    $result2 = $this->my_model->add_profile($data);
 
-                    if($result == TRUE){
+                    if($result == TRUE && $result2 == TRUE){
 
-                        $data['message'] = 'Registration successful!';
                         redirect(base_url('login'),$data);
 
                     }
@@ -102,7 +102,7 @@ class Controller extends CI_Controller {
             
             $this->session->set_userdata($sess_data);
             // $this->session->set_userdata('logged in', TRUE);
-            redirect(base_url('profile'));
+            redirect(base_url('home'));
 
         }else{
             $data['error_message'] = "Username and password did not match.Please try again!";
@@ -121,12 +121,88 @@ class Controller extends CI_Controller {
         }
     }
     
-    public function profile(){
+    public function home(){
 
+        $this->check_auth('home');
+        
+        $this->load->model('my_model');
+        $data['post'] = $this->my_model->get_post();
+
+        $username = array('username' => $this->session->userdata('username'));
+
+        $result = $this->my_model->get_profile($username);
+
+
+        if(!is_null($result)){
+            $data['profile'] = array(
+                'image' => $result['image']
+            );
+
+            $this->load->view('templates/main');
+            $this->load->view('main',$data);
+            $this->load->view('templates/footer');
+
+        }
+        
+    }
+
+    public function profile(){
         $this->check_auth('profile');
 
-        $this->load->view('templates/main');
-        $this->load->view('user_profile');
-        $this->load->view('templates/footer');
+        
+        $this->load->model('my_model');
+        $data['post'] = $this->my_model->get_post();
+
+        $username = array('username' => $this->session->userdata('username'));
+
+        $result = $this->my_model->get_profile($username);
+
+
+        if(!is_null($result)){
+            $data['profile'] = array(
+                'image' => $result['image']
+            );
+
+            $this->load->view('templates/main');
+            $this->load->view('profile',$data);
+            $this->load->view('templates/footer');
+
+        }
+
     }
+
+    public function post_submit(){
+        $this->load->model('my_model');
+
+        $this->form_validation->set_rules('post','post','required');
+
+        if($this->form_validation->run() == FALSE){
+            
+            $data['message_display'] = "Something went wrong.";
+            redirect(base_url('home'));
+        }else{
+            $data = array(
+                'username' => $this->session->userdata('username'),
+                'post' => $this->input->post('post')
+            );
+
+            $result = $this->my_model->insert_post($data);
+
+            if($result == TRUE){
+                redirect(base_url('home'));
+            }
+        }
+
+        
+    }
+
+    public function logout(){
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('password');
+        $this->session->unset_userdata('logged_in');
+        redirect(base_url(),'refresh');
+        
+    }
+
+    
 }
