@@ -13,7 +13,7 @@
                     <form action="<? echo base_url();?>post-submit" method="POST">
                         <div class="form-group">
                             <img class="logo-img rounded-circle border mb-3 mr-1" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="55" height="50"/>
-                            <textarea placeholder="Shout here?" row="0" id="content" name="post"></textarea>
+                            <textarea placeholder="Shout here?" row="0" name="post"></textarea>
                         </div>
                         <div class="submit-btn">
                             <div></div>
@@ -27,7 +27,7 @@
                     <div class="user-post mt-5">
                         <div class="form-group">
                             <img class="logo-img ml-4 mr-3 rounded-circle border " src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
-                            <h6 class="name-post"><? echo $posts['name']; ?></h6><small class="mb-2 ml-1 text-muted">@<? echo $posts['username'];?></small>
+                            <h6 class="name-post"><? echo $posts['name']; ?></h6><small class="mb-2 ml-1 text-muted">@<? echo $posts['username'];?>  <? $time = strtotime($posts['date']); echo date("M d, Y",$time);?></small>
                             <div class="post-content">
                                 <p><? echo $posts['post'];?></p>
                             </div>

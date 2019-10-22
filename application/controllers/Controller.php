@@ -69,7 +69,7 @@ class Controller extends CI_Controller {
 
                     if($result == TRUE && $result2 == TRUE){
 
-                        redirect(base_url('login'),$data);
+                        redirect(base_url('login'));
 
                     }
                 }
@@ -148,19 +148,24 @@ class Controller extends CI_Controller {
 
     public function profile(){
         $this->check_auth('profile');
-
-        
         $this->load->model('my_model');
-        $data['post'] = $this->my_model->get_post();
 
         $username = array('username' => $this->session->userdata('username'));
 
         $result = $this->my_model->get_profile($username);
 
+        $data['post'] = $this->my_model->get_my_post($username);
 
         if(!is_null($result)){
             $data['profile'] = array(
-                'image' => $result['image']
+                'username' => $result['username'],
+                'image' => $result['image'],
+                'cover' => $result['cover'],
+                'name' => $result['name'],
+                'bio' => $result['bio'],
+                'address' => $result['Address'],
+                'birthdate' => $result['birthdate'] 
+
             );
 
             $this->load->view('templates/main');

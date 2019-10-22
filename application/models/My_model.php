@@ -40,6 +40,17 @@ class My_model extends CI_Model {
             return null;
         }
     }
+    public function get_my_post($username){
+        $user = $username['username'];
+        $this->db->select('*');
+        $this->db->from('profile');
+        $this->db->join('post','profile.username = post.username');
+        $this->db->where('profile.username', $user);
+        $this->db->order_by('date','desc');
+        $result = $this->db->get();
+
+        return $result->result_array();
+    }
 
     public function check_username($username)
     {

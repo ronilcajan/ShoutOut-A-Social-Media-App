@@ -100,7 +100,7 @@ main {
 	background-color: white;
 }
 .home {
-	min-width: 598px;
+	min-width: 599px;
 	display: flex;
 	justify-content: stretch;
 	cursor: pointer;
@@ -146,10 +146,6 @@ textarea {
 	border: none;
 	padding: 10px;
 	color: #444;
-}
-textarea:hover {
-	border: none;
-	padding: 10px;
 }
 textarea.modal-shout {
 	width: 400px;
@@ -273,4 +269,90 @@ img.profile-img {
 	font-size: 20px;
 	margin-top: 15px;
 	margin-left: 10px;
+}
+
+img.cover {
+	height: 250px;
+	z-index: -1;
+}
+img.profile-pic {
+	width: 100px;
+	height: 100px;
+	background-color: white;
+	border: 5px solid white;
+	margin-top: -150px;
+	margin-left: 20px;
+}
+.bio {
+	margin-left: 10px;
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+}
+.bio > *:last-child {
+	margin-left: auto;
+	color: white;
+	border: none;
+	border-radius: 30px;
+	background-color: rgb(103, 103, 212);
+	font-size: 12px;
+	padding: 8px 12px;
+	font-weight: 700;
+}
+.bio > *:last-child:hover {
+	background-color: rgb(83, 83, 185);
+}
+.usr-txt {
+	color: #868788;
+	font-size: 12px;
+	font-weight: 800;
+}
+.my-bio {
+	width: 100%;
+	margin-left: 10px;
+	font-size: 14px;
+	color: #444;
+	font-weight: 700;
+}
+.my-bio table td {
+	padding: 5px 0px;
+	padding-right: 50px;
+	color: #868788;
+}
+.profile-info {
+	border-bottom: 8px solid #e6ecf0;
+}
+div.edit-btn {
+	position: absolute;
+	margin-top: -100px;
+	margin-left: 55px;
+}
+div.edit-btn label {
+	width: 30px;
+	cursor: pointer;
+	height: 30px;
+	background-color: #e6ecf0;
+	opacity: 0.4;
+}
+
+div.edit-btn label:hover {
+	background-color: #007bff;
+	color: white;
+}
+
+div.edit-cover {
+	position: absolute;
+	margin-top: -150px;
+	margin-left: 220px;
+}
+div.edit-cover label {
+	width: 30px;
+	cursor: pointer;
+	height: 30px;
+	background-color: #e6ecf0;
+	opacity: 0.4;
+}
+div.edit-cover label:hover {
+	background-color: #007bff;
+	color: white;
 }
