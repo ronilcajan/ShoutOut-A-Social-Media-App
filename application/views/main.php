@@ -3,7 +3,6 @@
         <header>
             <? $this->load->view('templates/navs');?>
         </header>
-        
         <main class="w-100">
             <div class="home position-fixed">
                 <p>Home</p>
@@ -14,6 +13,7 @@
                         <div class="form-group">
                             <img class="logo-img rounded-circle border mb-3 mr-1" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="55" height="50"/>
                             <textarea placeholder="Shout here?" row="0" name="post"></textarea>
+                            <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>
                         </div>
                         <div class="submit-btn">
                             <div></div>

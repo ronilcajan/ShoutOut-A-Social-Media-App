@@ -14,6 +14,7 @@
                         <div class="form-group">
                             <img class="logo-img rounded-circle border" src="<? echo base_url().'uploads/'.$profile['image'];?>" width="60" height="50"/>
                             <textarea placeholder="Shout here?" name='post' row="0" id="content" class="modal-shout"></textarea>
+                            <input type="text" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier" hidden=""/>
                         </div>
                 </div>
             <div>

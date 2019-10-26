@@ -106,5 +106,22 @@ class My_model extends CI_Model {
 
     }
 
+    public function edit_profile($data){
+        $username = $data['username'];
+        $userdata = array(
+            'image' => $data['image'],
+            'cover' => $data['cover'],
+            'name' => $data['name'],
+            'bio' => $data['bio'],
+            'Address' => $data['address'],
+            'birthdate' => $data['birthdate']
+        );
+
+        $this->db->set($userdata);
+        $this->db->where('username', $username);
+        $this->db->update('profile');
+        return $this->db->affected_rows();
+    }
+
 }
 ?>

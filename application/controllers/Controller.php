@@ -181,24 +181,90 @@ class Controller extends CI_Controller {
 
         $this->form_validation->set_rules('post','post','required');
 
-        if($this->form_validation->run() == FALSE){
-            
-            $data['message_display'] = "Something went wrong.";
-            redirect(base_url('home'));
-        }else{
-            $data = array(
-                'username' => $this->session->userdata('username'),
-                'post' => $this->input->post('post')
-            );
+        if($this->input->post('identifier') == "/home"){
 
-            $result = $this->my_model->insert_post($data);
-
-            if($result == TRUE){
+            if($this->form_validation->run() == FALSE){
+                
+                $data['message_display'] = "Something went wrong.";
                 redirect(base_url('home'));
+            
+            }else{
+                $data = array(
+                    'username' => $this->session->userdata('username'),
+                    'post' => $this->input->post('post')
+                );
+
+                $result = $this->my_model->insert_post($data);
+
+                if($result == TRUE){
+                    redirect(base_url('home'));
+                }
+            }
+
+        }else{
+            if($this->form_validation->run() == FALSE){
+                
+                $data['message_display'] = "Something went wrong.";
+                redirect(base_url('profile'));
+            
+            }else{
+                $data = array(
+                    'username' => $this->session->userdata('username'),
+                    'post' => $this->input->post('post')
+                );
+
+                $result = $this->my_model->insert_post($data);
+
+                if($result == TRUE){
+                    redirect(base_url('profile'));
+                }
             }
         }
+    }
 
-        
+    public function edit_profile(){
+
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            // $config['max_size'] = '100';
+            // $config['max_width'] = '1024';
+            // $config['max_height'] = '768';
+            
+
+            $this->load->library('upload',$config);
+
+            if($this->upload->do_upload('image')){
+
+                $filedata = $this->upload->data();
+                $filename = $filedata['raw_name'].$filedata['file_ext'];
+
+                if($this->upload->do_upload('cover')){
+                    $filedata1 = $this->upload->data();
+                    $filename1 = $filedata1['raw_name'].$filedata1['file_ext'];
+
+                    $data = array(
+                        'username' => $this->session->userdata('username'),
+                        'image' => $filename,
+                        'cover' => $filename1,
+                        'name' => $this->input->post('name'),
+                        'bio' => $this->input->post('bio'),
+                        'address' => $this->input->post('address'),
+                        'birthdate' => $this->input->post('born-date')
+                    );
+
+                    $this->load->model('my_model');
+                    $upload = $this->my_model->edit_profile($data);
+
+                    if($upload == TRUE){
+                        redirect('profile');
+                    }
+                }
+            }else{
+                $error = array('error' => $this->upload->display_errors());
+                $error['ero'] = $this->upload->do_upload('cover');
+                $this->load->view('error',$error);
+            }
     }
 
     public function logout(){

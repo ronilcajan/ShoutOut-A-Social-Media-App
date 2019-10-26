@@ -60,5 +60,6 @@ $route['signup-submit'] = 'controller/signup_submit';
 $route['login-user'] = 'controller/login_submit';
 $route['home'] = 'controller/home';
 $route['profile'] = 'controller/profile';
+$route['edit-profile'] = 'controller/edit_profile';
 $route['post-submit'] = 'controller/post_submit';
 $route['logout'] = 'controller/logout';
