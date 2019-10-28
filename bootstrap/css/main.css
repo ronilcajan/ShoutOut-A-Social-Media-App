@@ -2,6 +2,7 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 body {
@@ -106,6 +107,7 @@ main {
 	cursor: pointer;
 	border-bottom: 1px solid #e6ecf0;
 	background-color: white;
+	z-index: 2;
 }
 .home:hover {
 	background-color: rgb(203, 207, 209);
@@ -130,6 +132,7 @@ div.home p {
 	display: flex;
 	justify-content: space-between;
 }
+
 button.btn-danger {
 	background-color: #ec3e9b;
 	font-weight: 700;
@@ -177,22 +180,46 @@ textarea.modal-shout {
 .name-post {
 	font-weight: 800;
 }
+.user-post div.form-group > *:nth-child(1) {
+	width: 100%;
+	margin-left: 5%;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.user-post div.form-group > *:nth-child(1) h6 {
+	margin-bottom: -6px;
+}
+
+.user-post div.form-group > *:nth-child(1) .dropdown {
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 20px;
+}
+
+.user-post div.form-group > *:nth-child(2) {
+	width: 100%;
+	height: 30px;
+	margin-left: 5%;
+}
+.user-post div.form-group > *:nth-child(3) {
+	width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	margin-left: 5%;
+}
 .user-post div.form-group > *:nth-child(4) {
 	width: 100%;
-	margin-left: 15%;
-	margin-bottom: 10px;
-}
-.user-post div.form-group > *:nth-child(5) {
-	width: 100%;
-	margin-left: 14.5%;
 	margin-bottom: 10px;
 	display: flex;
 }
 .user-post div.form-group > *:last-child {
 	width: 100%;
-	margin-left: 14.5%;
 	margin-bottom: 10px;
 	display: flex;
+	margin-left: 5%;
 }
 .user-post div.form-group .action button {
 	font-weight: 800;
@@ -221,7 +248,8 @@ textarea.modal-shout {
 	background-color: rgb(103, 178, 221);
 }
 img.profile-img {
-	border: 1px solid #e6ecf0;
+	margin: 1px;
+	border: 3px solid #379cdf;
 }
 
 .sidebar {

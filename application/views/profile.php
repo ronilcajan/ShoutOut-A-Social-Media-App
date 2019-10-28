@@ -8,6 +8,14 @@
             <div class="home position-fixed">
                 <a href='<? echo base_url();?>home'><i class="fas fa-arrow-left"></i></a><p>Profile</p>
             </div>
+            <? if(isset($success)){ ?>
+            <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                <small><? echo $error_message; ?></small>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <? } ?>
             <div class="profile-info pb-2">
                 <img class="img-fluid w-100 mt-5 pt-1 cover" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
                 <img class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/>
@@ -40,11 +48,29 @@
                     foreach($post as $k => $posts){?>
                     <div class="user-post mt-5">
                         <div class="form-group">
-                            <img class="logo-img ml-4 mr-3 rounded-circle border " src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
-                            <h6 class="name-post"><? echo $posts['name']; ?></h6><small class="mb-2 ml-1 text-muted">@<? echo $posts['username'];?>  <? $time = strtotime($posts['date']); echo date("M d, Y",$time);?></small>
-                            <div class="post-content">
-                                <p><? echo $posts['post'];?></p>
+                            <div class="user-details">
+                                <img class="logo-img rounded-circle border mr-2" src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
+                                <div class="namess">
+                                    <h6 class="name-post"><? echo $posts['name']; ?></h6>
+                                    <small class="text-muted">@<? echo $posts['username'];?>  <? $time = strtotime($posts['date']); echo date("M d, Y",$time);?></small>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" area-haspopup="true" aria-expanded="false">
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="<? echo base_url().'delete-post/'.$posts['id'];?>">Remove</a>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="post-content">
+                                <p class="lead"><? echo $posts['post'];?></p>
+                            </div>
+                            <? if(!empty($posts['post-image'])){?>
+                            <div class="w-100">
+                                <img class="border p-1" src="<? echo base_url().'uploads/'.$posts['post-image']; ?>" height="300"/>
+                            </div>
+                            <? }?>
                             <div class='action'>
                                 <button class="w-50"><i class="fas fa-thumbs-up mr-2"></i>Like</button>
                                 <button class="w-50"><i class="fas fa-comment mr-2"></i>Comment</button>

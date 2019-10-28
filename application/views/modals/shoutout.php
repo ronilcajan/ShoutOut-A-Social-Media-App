@@ -10,11 +10,17 @@
             </div>
             <div class="modal-body">
                 <div class="input-text">
-                    <form action="<? echo base_url();?>post-submit" method="POST">
+                    <form action="<? echo base_url();?>post-submit" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <img class="logo-img rounded-circle border" src="<? echo base_url().'uploads/'.$profile['image'];?>" width="60" height="50"/>
                             <textarea placeholder="Shout here?" name='post' row="0" id="content" class="modal-shout"></textarea>
                             <input type="text" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier" hidden=""/>
+                        </div>
+                        <div style="height:35px; width:35px;" class="mb-3">
+                                <label class="pl-2 ml-5">
+                                    <i class="fas fa-image" style="cursor:pointer; font-size:40px; color:#ec3e9b;"></i>
+                                    <input type='file' name="shout-img" style="visibility:hidden;"/>
+                                </label>
                         </div>
                 </div>
             <div>

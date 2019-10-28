@@ -45,7 +45,7 @@ class My_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('profile');
         $this->db->join('post','profile.username = post.username');
-        $this->db->where('profile.username', $user);
+        $this->db->where('post.username', $user);
         $this->db->order_by('date','desc');
         $result = $this->db->get();
 
@@ -96,32 +96,99 @@ class My_model extends CI_Model {
     }
 
     public function insert_post($post){
-        $data = array(
-            'username' => $post['username'],
-            'post' => $post['post']
-        );
 
-        $this->db->insert('post', $data);
-        return $this->db->affected_rows();
+        if(empty($post['image'])){
+            $data = array(
+                'username' => $post['username'],
+                'post' => $post['post']
+            );
+
+            $this->db->insert('post', $data);
+            return $this->db->affected_rows();
+        }else{
+
+            $data = array(
+                'username' => $post['username'],
+                'post' => $post['post'],
+                'post-image' => $post['image']
+            );
+
+            $this->db->insert('post', $data);
+            return $this->db->affected_rows();
+        }
 
     }
 
     public function edit_profile($data){
-        $username = $data['username'];
-        $userdata = array(
-            'image' => $data['image'],
-            'cover' => $data['cover'],
-            'name' => $data['name'],
-            'bio' => $data['bio'],
-            'Address' => $data['address'],
-            'birthdate' => $data['birthdate']
-        );
 
-        $this->db->set($userdata);
-        $this->db->where('username', $username);
-        $this->db->update('profile');
-        return $this->db->affected_rows();
+        $username = $data['username'];
+
+        if($data['image'] == 1){
+            $userdata = array(
+                'cover' => $data['cover'],
+                'name' => $data['name'],
+                'bio' => $data['bio'],
+                'Address' => $data['address'],
+                'birthdate' => $data['birthdate']
+            );
+
+            $this->db->set($userdata);
+            $this->db->where('username', $username);
+            $this->db->update('profile');
+            return $this->db->affected_rows();
+
+        }elseif($data['cover'] == 2){
+
+            $userdata = array(
+                'image' => $data['image'],
+                'name' => $data['name'],
+                'bio' => $data['bio'],
+                'Address' => $data['address'],
+                'birthdate' => $data['birthdate']
+            );
+
+            $this->db->set($userdata);
+            $this->db->where('username', $username);
+            $this->db->update('profile');
+            return $this->db->affected_rows();
+            
+        }elseif($data['image'] == 3 && $data['cover'] == 3){
+
+            $userdata = array(
+                'name' => $data['name'],
+                'bio' => $data['bio'],
+                'Address' => $data['address'],
+                'birthdate' => $data['birthdate']
+            );
+
+            $this->db->set($userdata);
+            $this->db->where('username', $username);
+            $this->db->update('profile');
+            return $this->db->affected_rows();
+
+        }else{
+
+            $userdata = array(
+                'image' => $data['image'],
+                'cover' => $data['cover'],
+                'name' => $data['name'],
+                'bio' => $data['bio'],
+                'Address' => $data['address'],
+                'birthdate' => $data['birthdate']
+            );
+
+            $this->db->set($userdata);
+            $this->db->where('username', $username);
+            $this->db->update('profile');
+            return $this->db->affected_rows();
+        }
     }
 
+    public function delete_post($id){
+
+        $this->db->where('id',$id);
+        $query = $this->db->delete('post');
+        return $this->db->affected_rows();
+    }
 }
 ?>

@@ -62,4 +62,5 @@ $route['home'] = 'controller/home';
 $route['profile'] = 'controller/profile';
 $route['edit-profile'] = 'controller/edit_profile';
 $route['post-submit'] = 'controller/post_submit';
+$route['delete-post/(:num)'] = 'controller/delete_post/$1';
 $route['logout'] = 'controller/logout';

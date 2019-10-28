@@ -181,58 +181,221 @@ class Controller extends CI_Controller {
 
         $this->form_validation->set_rules('post','post','required');
 
-        if($this->input->post('identifier') == "/home"){
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif';
 
-            if($this->form_validation->run() == FALSE){
-                
-                $data['message_display'] = "Something went wrong.";
-                redirect(base_url('home'));
-            
-            }else{
-                $data = array(
-                    'username' => $this->session->userdata('username'),
-                    'post' => $this->input->post('post')
-                );
+        $this->load->library('upload',$config);
 
-                $result = $this->my_model->insert_post($data);
+        if(!$this->upload->do_upload('shout-img')){
 
-                if($result == TRUE){
+            if($this->input->post('identifier') == "/home"){
+
+                if($this->form_validation->run() == FALSE){
+                    
+                    $data['message_display'] = "Something went wrong.";
                     redirect(base_url('home'));
+                
+                }else{
+                    $data = array(
+                        'username' => $this->session->userdata('username'),
+                        'post' => $this->input->post('post'),
+                        'image' => " "
+                    );
+
+                    $result = $this->my_model->insert_post($data);
+
+                    if($result == TRUE){
+                        redirect(base_url('home'));
+                    }
+                }
+
+            }else{
+                if($this->form_validation->run() == FALSE){
+                    
+                    $data['message_display'] = "Something went wrong.";
+                    redirect(base_url('profile'));
+                
+                }else{
+                    $data = array(
+                        'username' => $this->session->userdata('username'),
+                        'post' => $this->input->post('post'),
+                        'image' => " "
+                    );
+
+                    $result = $this->my_model->insert_post($data);
+
+                    if($result == TRUE){
+                        redirect(base_url('profile'));
+                    }
+                }
+            }
+        }elseif(empty($this->input->post('post'))){
+
+            if($this->input->post('identifier') == "/home"){
+
+                if($this->upload->do_upload('shout-img')){
+                    $filedata = $this->upload->data();
+                    $filename = $filedata['raw_name'].$filedata['file_ext'];
+
+                    $data = array(
+                        'username' => $this->session->userdata('username'),
+                        'post' => $this->input->post('post'),
+                        'image' => $filename
+                    );
+
+                    $result = $this->my_model->insert_post($data);
+
+                    if($result == TRUE){
+                        redirect(base_url('home'));
+                    }
+                }
+
+            }else{
+
+                if($this->upload->do_upload('shout-img')){
+                    
+                    $filedata = $this->upload->data();
+                    $filename = $filedata['raw_name'].$filedata['file_ext'];
+                    $data = array(
+                        'username' => $this->session->userdata('username'),
+                        'post' => $this->input->post('post'),
+                        'image' => $filename
+                    );
+
+                    $result = $this->my_model->insert_post($data);
+
+                    if($result == TRUE){
+                        redirect(base_url('profile'));
+                    }
                 }
             }
 
         }else{
-            if($this->form_validation->run() == FALSE){
-                
-                $data['message_display'] = "Something went wrong.";
-                redirect(base_url('profile'));
-            
-            }else{
-                $data = array(
-                    'username' => $this->session->userdata('username'),
-                    'post' => $this->input->post('post')
-                );
 
-                $result = $this->my_model->insert_post($data);
+            if($this->upload->do_upload('shout-img')){
+                $filedata = $this->upload->data();
+                $filename = $filedata['raw_name'].$filedata['file_ext'];
 
-                if($result == TRUE){
-                    redirect(base_url('profile'));
+                if($this->input->post('identifier') == "/home"){
+
+                    if($this->form_validation->run() == FALSE){
+                        
+                        $data['message_display'] = "Something went wrong.";
+                        redirect(base_url('home'));
+                    
+                    }else{
+                        $data = array(
+                            'username' => $this->session->userdata('username'),
+                            'post' => $this->input->post('post'),
+                            'image' => $filename
+                        );
+
+                        $result = $this->my_model->insert_post($data);
+
+                        if($result == TRUE){
+                            redirect(base_url('home'));
+                        }
+                    }
+
+                }else{
+                    if($this->form_validation->run() == FALSE){
+                        
+                        $data['message_display'] = "Something went wrong.";
+                        redirect(base_url('profile'));
+                    
+                    }else{
+                        $data = array(
+                            'username' => $this->session->userdata('username'),
+                            'post' => $this->input->post('post'),
+                            'image' => $filename
+                        );
+
+                        $result = $this->my_model->insert_post($data);
+
+                        if($result == TRUE){
+                            redirect(base_url('profile'));
+                        }
+                    }
                 }
             }
         }
     }
 
     public function edit_profile(){
+        
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif';
 
 
-            $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'jpg|png|jpeg';
-            // $config['max_size'] = '100';
-            // $config['max_width'] = '1024';
-            // $config['max_height'] = '768';
+        $this->load->library('upload',$config);
+
+        if(!$this->upload->do_upload('cover') && !$this->upload->do_upload('image')){
             
+            $data = array(
+                'username' => $this->session->userdata('username'),
+                'image' => 3,
+                'cover' => 3,
+                'name' => $this->input->post('name'),
+                'bio' => $this->input->post('bio'),
+                'address' => $this->input->post('address'),
+                'birthdate' => $this->input->post('born-date')
+            );
 
-            $this->load->library('upload',$config);
+            $this->load->model('my_model');
+            $upload = $this->my_model->edit_profile($data);
+
+            if($upload == TRUE){
+                redirect('profile');
+            }
+        }elseif(empty($_FILES['image']['name'])){
+
+            if($this->upload->do_upload('cover')){
+                $filedata = $this->upload->data();
+                $filename = $filedata['raw_name'].$filedata['file_ext'];
+
+                $data = array(
+                    'username' => $this->session->userdata('username'),
+                    'image' => 1,
+                    'cover' => $filename,
+                    'name' => $this->input->post('name'),
+                    'bio' => $this->input->post('bio'),
+                    'address' => $this->input->post('address'),
+                    'birthdate' => $this->input->post('born-date')
+                );
+
+                $this->load->model('my_model');
+                $upload = $this->my_model->edit_profile($data);
+
+                if($upload == TRUE){
+                    redirect('profile');
+                }
+            }
+
+        }elseif(empty($_FILES['cover']['name'])){
+
+            if($this->upload->do_upload('image')){
+                $filedata1 = $this->upload->data();
+                $filename1 = $filedata1['raw_name'].$filedata1['file_ext'];
+
+                $data = array(
+                    'username' => $this->session->userdata('username'),
+                    'image' => $filename1,
+                    'cover' => 2,
+                    'name' => $this->input->post('name'),
+                    'bio' => $this->input->post('bio'),
+                    'address' => $this->input->post('address'),
+                    'birthdate' => $this->input->post('born-date')
+                );
+
+                $this->load->model('my_model');
+                $upload = $this->my_model->edit_profile($data);
+
+                if($upload == TRUE){
+                    redirect('profile');
+                }
+            }
+
+        }else{
 
             if($this->upload->do_upload('image')){
 
@@ -260,11 +423,21 @@ class Controller extends CI_Controller {
                         redirect('profile');
                     }
                 }
-            }else{
-                $error = array('error' => $this->upload->display_errors());
-                $error['ero'] = $this->upload->do_upload('cover');
-                $this->load->view('error',$error);
             }
+        }
+    }
+
+    public function delete_post($id){
+        if(empty($id)){
+            show_404();
+        }
+        $this->load->model('my_model');
+        $query = $this->my_model->delete_post($id);
+
+        if($query){
+            $message['success'] = 'Deleted Successfully';
+            redirect(base_url('profile'));
+        }
     }
 
     public function logout(){
@@ -272,7 +445,6 @@ class Controller extends CI_Controller {
         $this->session->unset_userdata('password');
         $this->session->unset_userdata('logged_in');
         redirect(base_url(),'refresh');
-        
     }
 
     
