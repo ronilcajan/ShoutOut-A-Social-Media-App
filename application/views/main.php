@@ -52,19 +52,31 @@
                             <div class="post-content">
                                 <p class="lead"><? echo $posts['post'];?></p>
                             </div>
-                            <? if(!empty($posts['post-image'])){?>
+                            <? if($posts['post-image'] != ""){?>
                             <div class="w-100">
                                 <img class="border p-1" src="<? echo base_url().'uploads/'.$posts['post-image']; ?>" height="300"/>
                             </div>
                             <? }?>
                             <div class='action'>
-                                <button class="w-50"><i class="fas fa-thumbs-up mr-2"></i>Like</button>
+                                <form action="<? echo base_url().'like/'.$posts['id'];?>" method="POST" class="w-50">
+                                    <? if($posts['like_post'] > 0){?>
+                                    <input type='hidden' name="user" value="<? echo $this->session->userdata('username');?>" />
+                                    <button type="submit" class="w-100 text-info"><i class="fas fa-hand-paper mr-2  "></i>Claps<small>(<? echo $posts['like_post'];?>)</small></button>
+                                    
+                                    <?}else{?>
+                                    <input type='hidden' name="user" value="<? echo $this->session->userdata('username');?>" />
+                                    <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>
+                                    <button type="submit" class="w-100"><i class="fas fa-hand-paper mr-2 "></i>Claps<small>(<? echo $posts['like_post'];?>)</small></button>
+                                    <?}?>
+                                </form>
                                 <button class="w-50"><i class="fas fa-comment mr-2"></i>Comment</button>
+                                
                             </div>
                             <div class="comment">
                                 <img class="profile-img rounded-circle mr-2" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="40" height="40"/>
-                                <form action="" method="POST" class="w-100">
+                                <form action="<? echo base_url().'comment/'.$posts['id'];?>" method="POST" class="w-100">
                                     <input type="text" class="comment-box border-0" name="comment" placeholder="Comment here"/>
+                                    <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>                               
                                     <button type="submit" class="okay-btn">Okay</button>
                                 </form>
                             </div>
@@ -73,7 +85,7 @@
                     <?}?>
             </div> 
         </main>
-    
+        
         <div class="sidebar">
             <? $this->load->view('templates/sidebar');?>
         </div>

@@ -42,10 +42,12 @@ class My_model extends CI_Model {
     }
     public function get_my_post($username){
         $user = $username['username'];
-        $this->db->select('*');
+
+        $this->db->select('*, COUNT(post_id) as like_post');
         $this->db->from('profile');
         $this->db->join('post','profile.username = post.username');
-        $this->db->where('post.username', $user);
+        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->group_by('post.id');
         $this->db->order_by('date','desc');
         $result = $this->db->get();
 
@@ -87,9 +89,11 @@ class My_model extends CI_Model {
 
     public function get_post(){
 
-        $this->db->select('*');
+        $this->db->select('*, COUNT(post_id) as like_post');
         $this->db->from('post');
         $this->db->join('profile', 'post.username = profile.username');
+        $this->db->join('likes', 'likes.post_id=post.id','LEFT');
+        $this->db->group_by('post.id');
         $this->db->order_by('date','desc');
         $query = $this->db->get();
         return $query->result_array();
@@ -156,7 +160,7 @@ class My_model extends CI_Model {
 
             $userdata = array(
                 'name' => $data['name'],
-                'bio' => $data['bio'],
+                'bio' =>  $data['bio'],
                 'Address' => $data['address'],
                 'birthdate' => $data['birthdate']
             );
@@ -188,6 +192,28 @@ class My_model extends CI_Model {
 
         $this->db->where('id',$id);
         $query = $this->db->delete('post');
+        return $this->db->affected_rows();
+    }
+
+    public function insert_like($user){
+        $likes = array(
+            'post_id' => $user['post-id'],
+            'username' => $user['username']
+        );
+
+        $this->db->insert('likes', $likes);
+
+        return $this->db->affected_rows();
+    }
+
+    public function insert_comment($data){
+        $userdata = array(
+            'post_id' => $data['post-id'],
+            'username' => $data['username'],
+            'comments' => $data['comment']
+        );
+
+        $this->db->insert('comments', $userdata);
         return $this->db->affected_rows();
     }
 }

@@ -199,7 +199,7 @@ class Controller extends CI_Controller {
                     $data = array(
                         'username' => $this->session->userdata('username'),
                         'post' => $this->input->post('post'),
-                        'image' => " "
+                        'image' => ""
                     );
 
                     $result = $this->my_model->insert_post($data);
@@ -219,7 +219,7 @@ class Controller extends CI_Controller {
                     $data = array(
                         'username' => $this->session->userdata('username'),
                         'post' => $this->input->post('post'),
-                        'image' => " "
+                        'image' => ""
                     );
 
                     $result = $this->my_model->insert_post($data);
@@ -437,6 +437,51 @@ class Controller extends CI_Controller {
         if($query){
             $message['success'] = 'Deleted Successfully';
             redirect(base_url('profile'));
+        }
+    }
+
+    public function like($id){
+
+        $user = array(
+            'post-id' => $id,
+            'username' => $this->input->post('user')
+        );
+
+        $this->load->model('my_model');
+
+        $query = $this->my_model->insert_like($user);
+
+        if($this->input->post('identifier') == '/home'){
+            if($data){
+                redirect(base_url('home'));
+            }
+        }else{
+            if($data){
+                redirect(base_url('profile'));
+            }
+        }
+    }
+
+    public function comment($post_id){
+
+        $comment = array(
+            'post-id' => $post_id,
+            'username' => $this->session->userdata('username'),
+            'comment' => $this->input->post('comment')
+        );
+
+        $this->load->model('my_model');
+
+        $data = $this->my_model->insert_comment($comment);
+
+        if($this->input->post('identifier') == '/home'){
+            if($data){
+                redirect(base_url('home'));
+            }
+        }else{
+            if($data){
+                redirect(base_url('profile'));
+            }
         }
     }
 

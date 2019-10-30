@@ -227,6 +227,9 @@ textarea.modal-shout {
 	border: none;
 	background-color: #ffffff;
 }
+.action form button.w-50 {
+	color: rebeccapurple;
+}
 .user-post div.form-group .action button:hover {
 	color: rgb(116, 116, 197);
 	background-color: #ffffff;
