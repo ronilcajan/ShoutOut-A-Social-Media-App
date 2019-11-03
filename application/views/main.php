@@ -12,7 +12,7 @@
                     <form action="<? echo base_url();?>post-submit" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <img class="logo-img rounded-circle border mb-3 mr-1" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="55" height="50"/>
-                            <textarea placeholder="Shout here?" row="0" name="post" id="myText"></textarea>
+                            <textarea placeholder="Shout here?"  row="0" name="post" id="exampleTextarea" "></textarea>
                             <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>
                         </div>
                         <div class="submit-btn pl-5 ml-3">

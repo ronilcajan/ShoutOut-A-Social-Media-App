@@ -449,7 +449,7 @@ class Controller extends CI_Controller {
 
         $this->load->model('my_model');
 
-        $query = $this->my_model->insert_like($user);
+        $data = $this->my_model->insert_like($user);
 
         if($this->input->post('identifier') == '/home'){
             if($data){
