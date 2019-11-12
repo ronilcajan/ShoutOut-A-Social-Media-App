@@ -12,11 +12,7 @@
             Are you sure you want to logout?
             </div>
             <div class="modal-footer">
-<<<<<<< HEAD
-                <button type="button" class="btn btn-danger" onclick="location.href='<? echo base_url();?>logout'">Yes</button>
-=======
                 <button type="button" class="btn btn-warning" onclick="location.href='<? echo base_url();?>logout'">Yes</button>
->>>>>>> New push
             </div>
         </div>
     </div>

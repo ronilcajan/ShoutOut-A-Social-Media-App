@@ -3,11 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-<<<<<<< HEAD
-                <h5 class="modal-title" id="exampleModalLabel">What is in your mind?</h5>
-=======
                 <h5 class="modal-title" id="exampleModalLabel">What's in your mind?</h5>
->>>>>>> New push
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,11 +16,7 @@
             <div>
             </div>
             <div class="modal-footer">
-<<<<<<< HEAD
-                <button type="submit" class="btn btn-danger">Shout</button>
-=======
                 <button type="submit" class="btn btn-info">Shout</button>
->>>>>>> New push
             </div>
             </form>
         </div>
