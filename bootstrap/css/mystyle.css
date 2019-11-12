@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 body {
-	background-image: url("../../uploads/logo.png");
+	background-image: url("../../images/logo.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100%;
