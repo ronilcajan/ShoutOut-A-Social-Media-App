@@ -4,7 +4,7 @@
 	box-sizing: border-box;
 }
 body {
-	background-image: url("../../images/logo.svg");
+	background-image: url("<? echo base_url();?>images/logo.svg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100%;
