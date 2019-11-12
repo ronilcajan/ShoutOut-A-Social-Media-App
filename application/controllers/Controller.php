@@ -61,7 +61,9 @@ class Controller extends CI_Controller {
 
                     $data = array(
                         'username' => $this->input->post('username'),
-                        'password' => md5($this->input->post('password'))
+
+                        'password' => sha1($this->input->post('password'))
+
                     );
 
                     $result = $this->my_model->add_guest($data);
@@ -86,7 +88,11 @@ class Controller extends CI_Controller {
 
         $logindata = array(
             'username' => $this->input->post('username'),
+<<<<<<< HEAD
             'password' => md5($this->input->post('password'))
+=======
+            'password' => sha1($this->input->post('password'))
+>>>>>>> New push
         );
 
         $this->load->model('my_model');

@@ -58,12 +58,17 @@
                                     <small class="text-muted">@<? echo $posts['username'];?>  <? $time = strtotime($posts['date']); echo date("M d, Y",$time);?></small>
                                 </div>
                                 <div class="dropdown">
-                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" area-haspopup="true" aria-expanded="false">
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <a class="dropdown-item" href="#">Dropdown link</a>
+                                        <a class="dropdown-item" href="#">Dropdown link</a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <!-- <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" area-haspopup="true" aria-expanded="false">
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="<? echo base_url().'delete-post/'.$posts['id'];?>">Remove</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="post-content">

@@ -51,6 +51,7 @@ class My_model extends CI_Model {
         $this->db->order_by('date','desc');
         $result = $this->db->get();
 
+
         return $result->result_array();
     }
 

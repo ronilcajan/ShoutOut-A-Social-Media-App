@@ -23,7 +23,8 @@
                                 </label>
                             </div>
                             <div>
-                                <button class="btn btn-danger" type="submit" id="submit-btn">Shout</button>
+
+                                <button class="btn btn-info" type="submit">Shout</button>
                             </div>
                         </div>
                     </form>
@@ -40,7 +41,11 @@
                                     <small class="text-muted">@<? echo $posts['username'];?>  <? $time = strtotime($posts['date']); echo date("M d, Y",$time);?></small>
                                 </div>
                                 <div class="dropdown">
+<<<<<<< HEAD
                                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" area-haspopup="true" aria-expanded="false">
+=======
+                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" area-haspopup="true" aria-expanded="false">
+>>>>>>> New push
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Edit</a>
