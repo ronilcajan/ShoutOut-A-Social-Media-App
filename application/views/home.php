@@ -13,7 +13,7 @@
             <div class="clicks">
                 <div class="clicks-1">
                     <div class="logo-container">
-                        <img src="<? echo base_url();?>images/logo.svg" class="logo">
+                        <img src="<? echo base_url();?>uploads/logo.svg" class="logo">
                     </div>
                     <div class="click-b">
                         <button class="select" onclick="location.href='<? echo base_url();?>about'">About ?</button>
