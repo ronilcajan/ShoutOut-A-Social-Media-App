@@ -62,7 +62,7 @@
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="#">Remove</a>
+                                        <a class="dropdown-item" href="<? echo base_url().'delete-post/'.$posts['id']'?>">Remove</a>
                                     </div>
                                 </div>
                             </div>
