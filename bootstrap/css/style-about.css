@@ -5,7 +5,7 @@
 	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 body {
-	background-image: url("../../images/logo.svg");
+	background-image: url("../../images/logo.png");
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 100%;
@@ -68,4 +68,71 @@ main {
 	color: white;
 	font-size: 75px;
 	font-weight: 900;
+}
+@media only screen and (max-width: 1024px) {
+	.main-text {
+		font-size: 65px;
+		text-align: center;
+	}
+	a.nav-link,
+	a.navs {
+		color: white;
+	}
+}
+
+@media only screen and (max-width: 768px) and (max-height: 1024px) {
+	main {
+		margin-top: 10%;
+	}
+	.shout {
+		font-size: 30px;
+	}
+	.main-text {
+		font-size: 70px;
+		text-align: left;
+	}
+	a.nav-link {
+		margin: 0 15px;
+		padding: 10px 40px;
+		color: white;
+		border-color: white;
+	}
+	a.navs {
+		color: white;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	main {
+		margin-top: 5%;
+	}
+	.main-text {
+		font-size: 60px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	main {
+		width: 88%;
+		text-align: center;
+	}
+	.main-text {
+		font-size: 55px;
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 414px) {
+	main {
+		margin-top: 20%;
+	}
+	.main-text {
+		font-size: 40px;
+	}
+	nav {
+		display: none;
+	}
+	div.logo-container {
+		margin-left: 20%;
+	}
 }

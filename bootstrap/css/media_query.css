@@ -1,0 +1,76 @@
+/* Extra small devices (phones, 375px and down) */
+@media only screen and (max-width: 414px) {
+	.left-side {
+		display: none;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {
+	.click-b {
+		background-color: rebeccapurple;
+	}
+	button.select {
+		display: none;
+	}
+	.right-side {
+		text-align: center;
+	}
+	.logo-container {
+		margin-left: 30%;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+	.tags {
+		margin-top: -70px;
+	}
+	.tag li {
+		font-size: 12px;
+		font-weight: bold;
+		margin-top: -20px;
+	}
+	.fa-search,
+	.fa-comments,
+	.fa-user {
+		margin: 10px 15px 0 0;
+		font-size: 20px;
+	}
+
+	.clicks {
+		width: 80%;
+		margin-top: -10%;
+	}
+	h2 {
+		font-size: 18px;
+		margin-top: 10px;
+	}
+	h3 {
+		font-size: 12px;
+	}
+}
+@media only screen and (max-width: 768px) and (max-height: 1024px) {
+	.left-side {
+		display: none;
+	}
+	.click-b {
+		display: none;
+	}
+	.right-side {
+		text-align: center;
+	}
+	h2 {
+		font-size: 30px;
+		margin-top: 20px;
+	}
+	h3 {
+		font-size: 20px;
+	}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1024px) {
+	button.select {
+		margin-left: 90px;
+	}
+}
