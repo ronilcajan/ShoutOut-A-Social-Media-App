@@ -12,7 +12,7 @@ body {
 }
 main {
 	position: relative;
-	height: 600px;
+	height: 100vh;
 	display: flex;
 	align-items: stretch;
 }
@@ -32,6 +32,7 @@ main {
 }
 
 .tags {
+	margin-top: -10%;
 	color: white;
 }
 .tag {

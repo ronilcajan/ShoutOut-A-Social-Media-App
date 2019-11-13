@@ -100,6 +100,9 @@ main {
 	a.navs {
 		color: white;
 	}
+	body {
+		background-image: none;
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -108,6 +111,9 @@ main {
 	}
 	.main-text {
 		font-size: 60px;
+	}
+	body {
+		background-image: none;
 	}
 }
 
@@ -119,6 +125,9 @@ main {
 	.main-text {
 		font-size: 55px;
 		text-align: center;
+	}
+	body {
+		background-image: none;
 	}
 }
 
@@ -134,5 +143,8 @@ main {
 	}
 	div.logo-container {
 		margin-left: 20%;
+	}
+	body {
+		background-image: none;
 	}
 }
