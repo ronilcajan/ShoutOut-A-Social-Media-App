@@ -46,6 +46,7 @@ class My_model extends CI_Model {
         $this->db->select('*, COUNT(post_id) as like_post');
         $this->db->from('profile');
         $this->db->join('post','profile.username = post.username');
+        $this->db->where('profile.username',$user);
         $this->db->join('likes', 'likes.post_id = post.id','LEFT');
         $this->db->group_by('post.id');
         $this->db->order_by('date','desc');

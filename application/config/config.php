@@ -23,11 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-
+// for production
 $config['base_url'] = 'https://shoutout.azurewebsites.net';
+$config['index_page'] = '';
 
 // $config['base_url'] = 'http://localhost/shoutout';
-
+// $config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,9 @@ $config['base_url'] = 'https://shoutout.azurewebsites.net';
 |
 */
 
-$config['index_page'] = '';
 
-// $config['index_page'] = 'index.php';
+
+
 
 
 /*

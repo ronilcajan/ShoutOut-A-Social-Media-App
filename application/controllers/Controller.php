@@ -28,6 +28,12 @@ class Controller extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function error404(){
+        $this->load->view('templates/header-login-signup');
+        $this->load->view('error');
+        $this->load->view('templates/footer');
+    }
+
     public function signup_submit(){
 
         //check validation
@@ -179,7 +185,6 @@ class Controller extends CI_Controller {
     }
 
     public function post_submit(){
-        $this->load->model('my_model');
 
         $this->form_validation->set_rules('post','post','required');
 
@@ -326,7 +331,7 @@ class Controller extends CI_Controller {
     public function edit_profile(){
         
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'jpg|png|jpeg|gif';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif|heic';
 
 
         $this->load->library('upload',$config);
