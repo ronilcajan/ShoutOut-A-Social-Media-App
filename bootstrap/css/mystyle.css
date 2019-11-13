@@ -28,6 +28,7 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 100vh;
 }
 
 .tags {
@@ -92,6 +93,7 @@ h2 {
 h3 {
 	font-size: 20px;
 }
+
 .click-btn {
 	margin: 0;
 }
