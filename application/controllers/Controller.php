@@ -185,6 +185,7 @@ class Controller extends CI_Controller {
     }
 
     public function post_submit(){
+        $this->load->model('my_model');
 
         $this->form_validation->set_rules('post','post','required');
 
