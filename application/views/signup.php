@@ -6,7 +6,7 @@
                 <a class="navs" href="<? echo base_url();?>about">About</a>
                 </div>
             <nav>
-                <a href="<? echo base_url();?>login" class="nav-link">Log in</a>
+                <a href="<? echo base_url();?>login" class="nav-link">Login</a>
             </nav>
         </div>
     </header>
@@ -22,12 +22,12 @@
         <? } ?>
 
         <div class="login-form-container">
-            <h3 class="login-text">Sign up to ShoutOut</h3>
+            <h3 class="login-text">Signup to ShoutOut</h3>
             <form class="login-form" action="<? echo base_url();?>signup-submit" method="POST">
-                <input type="text" class="form-control form-control-sm username" id="username" name="username" placeholder="Username or email"/>
-                <input type="password" pattern=".{8,}" title="8 or more characters" class="form-control form-control-sm password" id="password" name="password" placeholder="Password"/>
+                <input type="text" class="form-control form-control-sm username" id="username" name="username" placeholder="Username" required/>
+                <input type="password" pattern=".{8,}" title="8 or more characters" class="form-control form-control-sm password" id="password" name="password" placeholder="Password" required/>
                 <small class="text-muted font-italic">Password must contain 8 or more character.</small>
-                <input type="password" class="form-control form-control-sm password mt-4" name="password1" placeholder="Confirm Password"/>
+                <input type="password" class="form-control form-control-sm password mt-4" name="password1" placeholder="Confirm Password" required/>
                 <small class="text-muted font-italic">Please confirm your password.</small>
                 <div class="btn-container">
                     <button type="submit" class="login-btn">Sign up</button>

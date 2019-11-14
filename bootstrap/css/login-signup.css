@@ -118,12 +118,20 @@ button.login-btn:hover {
 @media only screen and (max-width: 600px) {
 	.login-form-container,
 	.login-form {
-		width: 80%;
+		width: 85%;
 		margin: auto;
 	}
 	.login-text {
 		margin-top: 30px;
 		text-align: center;
+		font-weight:bold;
+
+	}
+	.text-container p{
+		font-size:10px;
+	}
+	form.login-form >*:nth-child(3){
+		font-size:10px;
 	}
 }
 @media only screen and (max-width: 414px) {
@@ -140,11 +148,21 @@ button.login-btn:hover {
 		font-size: 20px;
 	}
 	.logo-container > *:nth-child(2) {
-		padding-bottom: 8px;
+		padding-bottom: 9px;
 	}
 	.text-container p {
 		font-size: 10px;
 	}
 }
 @media only screen and (max-width: 1024px) {
+	.login-form-container,
+	.login-form {
+		width: 80%;
+		margin: auto;
+	}
+	.login-text {
+		margin-top: 30px;
+		text-align: center;
+		font-weight:bold;
+	}
 }
