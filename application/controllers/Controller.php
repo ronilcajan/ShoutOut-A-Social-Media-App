@@ -35,41 +35,26 @@ class Controller extends CI_Controller {
     }
 
     public function signup_submit(){
+        
+        $validation = array('success' => false, 'message' => array());
 
-        //check validation
-        $this->form_validation->set_rules('username','username','required');
-        $this->form_validation->set_rules('password','password','required');
+         if($this->input->post('password') == $this->input->post('password1')){
 
-        if($this->input->post('password') == $this->input->post('password1')){
-
-            if($this->form_validation->run()==FALSE){
-
-                $data['message_display'] = "Something went wrong.";
-                $this->load->view('templates/header-login-signup');
-                $this->load->view('signup', $data);
-                $this->load->view('templates/footer');
-
-            }else{
-
-                $this->load->model('my_model');
-                
                 $username = array('username' => $this->input->post('username'));
                 
                 $query = $this->my_model->check_username($username);
 
                 if(!is_null($query)){
-                    $data['message_display'] = "Username already exist. Please try again.";
-                    $this->load->view('templates/header-login-signup');
-                    $this->load->view('signup',$data);
-                    $this->load->view('templates/footer');
+
+                    $validation['success'] = false;
+                    $validation['message'] = "Username already exist. Please try another username.";
 
                 }else{
 
                     $data = array(
                         'username' => $this->input->post('username'),
-
+                        'email' => $this->input->post('email'),
                         'password' => sha1($this->input->post('password'))
-
                     );
 
                     $result = $this->my_model->add_guest($data);
@@ -77,20 +62,24 @@ class Controller extends CI_Controller {
 
                     if($result == TRUE && $result2 == TRUE){
 
-                        redirect(base_url('login'));
+                        $validation['success'] = true;
+                        $validation['message'] = "login";
 
                     }
                 }
-            }
+
+
         }else{
-            $data['message_display'] = 'Password did not match.Please try again!';
-            $this->load->view('templates/header-login-signup');
-            $this->load->view('signup',$data);
-            $this->load->view('templates/footer');
+            $validation['success'] = false;
+            $validation['message'] = "Password did not match!";
         }
+
+        echo json_encode($validation);
     }
 
+
     public function login_submit(){
+        $validation = array('success' => false, 'message' => array());
 
         $logindata = array(
             'username' => $this->input->post('username'),
@@ -109,16 +98,15 @@ class Controller extends CI_Controller {
             );
             
             $this->session->set_userdata($sess_data);
-            // $this->session->set_userdata('logged in', TRUE);
-            redirect(base_url('home'));
+            
+            $validation['success'] = true;
+            $validation['message'] = "home";
 
         }else{
-            $data['error_message'] = "Username and password did not match.Please try again!";
-
-			$this->load->view('templates/header-login-signup');
-			$this->load->view('login',$data);
-			$this->load->view('templates/footer');
+            $validation['success'] = false;
+            $validation['message'] = "Username and Password is incorrect!";
         }
+        echo json_encode($validation);
         
     }
 
@@ -405,7 +393,7 @@ class Controller extends CI_Controller {
 
         }else{
 
-            if($this->upload->do_upload('image')){
+            if($this->upload->do_upload('		image')){
 
                 $filedata = $this->upload->data();
                 $filename = $filedata['raw_name'].$filedata['file_ext'];

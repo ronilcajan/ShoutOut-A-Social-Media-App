@@ -9,6 +9,7 @@ class My_model extends CI_Model {
     public function add_guest($data){
         $userdata = array(
             'username' => $data['username'],
+            'email' => $data['email'],
             'password' => $data['password']
         );
 

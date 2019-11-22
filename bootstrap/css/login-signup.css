@@ -1,168 +1,65 @@
 body {
-	background-color: #e6ecf0;
+	background: #ff512f; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#dd2476,
+		#ff512f
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#dd2476,
+		#ff512f
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-header {
-	background-color: white;
-	border-bottom: 1px solid rgb(175, 170, 170);
-}
-.nav-container {
-	display: flex;
-	width: 60%;
-	margin: auto;
-	align-items: center;
-	height: 7vh;
-}
-.logo-container {
-	flex: 3;
-	display: flex;
-	align-items: center;
-}
-nav {
-	flex: 1;
-	display: flex;
-	justify-content: flex-end;
-	font-weight: 800;
-}
-.logo-img {
-	margin-right: 5px;
-	filter: drop-shadow(2px 2px 8px gray);
-}
-a.navs {
-	margin: 2px 0 0 15px;
-	color: violet;
-	font-size: 16px;
+a.signup-text {
 	text-decoration: none;
-	transition: all 0.5s;
-	font-weight: 900;
-	padding: 7px 1px;
 }
-a.nav-link {
-	text-decoration: none;
-	color: violet;
-	padding: 3px 8px;
-	border-radius: 20px;
-	background-color: white;
-	margin: 0 10px;
-	border: 1px solid violet;
-	transition: all 1s;
-	font-size: 12px;
-}
-a.navs:hover {
-	color: rgb(245, 9, 245);
-}
-.nav-link:hover {
-	color: white;
-	background-color: violet;
-	border: 1px solid violet;
-}
-
-main {
-	background-color: white;
-	width: 59%;
-	margin: auto;
-	margin-top: 10px;
-	border: 1px solid rgb(196, 190, 190);
-	border-radius: 1px;
-}
-.login-form-container {
-	width: 65%;
-	margin: auto;
-	margin-top: 5%;
-	margin-bottom: 20px;
-}
-.login-text {
-	font-size: 25px;
-	font-weight: 900;
-	margin-bottom: 15px;
-}
-.login-form {
-	display: flex;
-	flex-direction: column;
-	width: 60%;
-}
-input.username {
-	margin: 10px 0;
-}
-input.password {
-	margin: 10px 0;
-}
-button.login-btn {
-	margin-top: 15px;
-	font-weight: 900;
-	color: white;
-	border: 1px solid violet;
-	background-color: violet;
-	padding: 10px 15px;
-	border-radius: 20px;
-	transition: all 1s;
-}
-button.login-btn:hover {
-	background-color: rgb(223, 24, 223);
-}
-.text-container {
+.img {
 	width: 100%;
-	height: 100px;
-	margin: auto;
-	background-color: #f5f8fa;
-	color: #657786;
-	padding-top: 5px;
+	height: 88.5%;
+	opacity: 0.8;
 }
-.text-container p {
-	width: 65%;
-	margin: auto;
-	margin-top: 20px;
-	font-size: 14px;
-	line-height: 20px;
+.img-login {
+	width: 100%;
+	height: 83.5%;
+	opacity: 0.8;
+}
+.login-container {
+	height: 525px;
+}
+@media only screen and (max-width: 1024px) and (max-height: 768px) {
+	.img{
+		height: 100%;
+	}
+	.img-login{
+		height: 100%;
+	} 
+	
 }
 
-@media only screen and (max-width: 600px) {
-	.login-form-container,
-	.login-form {
-		width: 85%;
-		margin: auto;
+@media only screen and (max-width: 768px) and (max-height: 1024px) {
+	div.row-75.m-auto.main-card {
+		width: 100%;
+		color: red;
 	}
-	.login-text {
-		margin-top: 30px;
-		text-align: center;
-		font-weight:bold;
-
-	}
-	.text-container p{
-		font-size:10px;
-	}
-	form.login-form >*:nth-child(3){
-		font-size:10px;
+}
+@media only screen and (max-width: 1300px) and (max-height: 1366px) {
+	.img {
+		height: 100%;
 	}
 }
 @media only screen and (max-width: 414px) {
-	.nav-container {
-		width: 80%;
-	}
-	a.navs {
-		font-size: 12px;
-	}
-	main {
-		width: 80%;
-	}
-	.login-text {
-		font-size: 20px;
-	}
-	.logo-container > *:nth-child(2) {
-		padding-bottom: 7.5px;
-	}
-	.text-container p {
-		font-size: 10px;
+	.img {
+		display: none;
 	}
 }
-@media only screen and (max-width: 1024px) {
-	.login-form-container,
-	.login-form {
-		width: 80%;
-		margin: auto;
+@media only screen and (max-width: 320px) {
+	main {
+		margin-top: 5px;
 	}
-	.login-text {
-		margin-top: 30px;
-		text-align: center;
-		font-weight:bold;
+}
+@media only screen and (max-width: 768px) {
+	.left-card {
+		display: none;
 	}
 }

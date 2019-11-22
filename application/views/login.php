@@ -1,38 +1,40 @@
 <body>
-    <header>
-        <div class="nav-container">
-            <div class="logo-container">
-                <a class="navs" href="<? echo base_url();?>"><img class="logo-img" src="<? echo base_url();?>images/logo.png" width="40" height="30"/>Home</a>
-                <a class="navs" href="<? echo base_url();?>about">About</a>
-                </div>
-            <nav>
-                <a href="<? echo base_url();?>signup" class="nav-link">Signup</a>
-            </nav>
-        </div>
-    </header>
-    <main>
+    <main class="h-100 mt-5">
+        <div class="row w-75 m-auto main-card">
 
-        <? if(isset($error_message)){ ?>
-        <div class='alert alert-warning alert-dismissible fade show' role='alert'>
-            <small><? echo $error_message; ?></small>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <? } ?>
-
-        <div class="login-form-container">
-            <h3 class="login-text">Log in to ShoutOut</h3>
-            <form class="login-form" action="<? echo base_url();?>login-user" method="POST">
-                <input type="text" class="form-control form-control-sm username" name="username" placeholder="Username" required/>
-                <input type="password" class="form-control form-control-sm password" name="password" placeholder="Password" required/>
-                <div class="btn-container">
-                    <button type="submit" class="login-btn">Log in</button>
+            <div class="col-md-6 p-0 right-card">
+                <div class="card bg-secondary">
+                    <form action="" method="POST">
+                        <div class="card-body card-main login-container">
+                                <div class="mt-3 form-group text-center">
+                                    <img src="<? echo base_url();?>images/logo.png" class="logo mb-2" width="50" height="40">
+                                    <h3 class="text-primary font-weight-bolder">Login to ShoutOut</h3>                        
+                                </div>
+                                <div class="form-group mt-5">
+                                    <label class="col-form-label" for="inputDefault">Username</label>
+                                    <input type="text" class="form-control username" name="username" placeholder="Enter Username" id="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label" for="inputDefault">Password</label>
+                                    <input type="password" title="8 or more characters" class="form-control password" name="password" placeholder="Enter Password" id="password"  required>
+                                </div>
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label text-primary" for="customCheck1">Remember me?</label>
+                                </div>
+                                <small class="mt-5 text-muted font-italic">Need an Account?<a href="<? echo base_url();?>signup" class="btn-link">Create here</a></small>
+                                <div class="mt-3 form-group text-center">
+                                    <button class="btn btn-primary rounded-pill btn-lg w-75 login-btn mt-5">Sign in</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </div>
-        <div class="text-container">
-            <p>New to ShoutOut? <a href="<? echo base_url();?>signup" >Sign up now »</a></p>
+            <div class="col-md-6 text-center left-card p-0">
+                <div class="h-100 logo-container">
+                    <img class="img-login img-fluid" src="<? echo base_url();?>images/login.jpg"/>
+                </div>
+            </div>
         </div>
     </main>
 
