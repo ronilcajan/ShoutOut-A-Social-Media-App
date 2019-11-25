@@ -189,57 +189,25 @@ class My_model extends CI_Model {
     }
 
     public function edit_profile($data){
-
+        var_dump($data);
         $username = $data['username'];
 
-        if($data['image'] == 1){
-            $userdata = array(
-                'cover' => $data['cover'],
-                'name' => $data['name'],
-                'bio' => $data['bio'],
-                'Address' => $data['address'],
-                'birthdate' => $data['birthdate']
-            );
+        if($data['image']){
 
-            $this->db->set($userdata);
+            $this->db->set('image',$data['image']);
             $this->db->where('username', $username);
             $this->db->update('profile');
             return $this->db->affected_rows();
 
-        }elseif($data['cover'] == 2){
-
-            $userdata = array(
-                'image' => $data['image'],
-                'name' => $data['name'],
-                'bio' => $data['bio'],
-                'Address' => $data['address'],
-                'birthdate' => $data['birthdate']
-            );
-
-            $this->db->set($userdata);
-            $this->db->where('username', $username);
-            $this->db->update('profile');
-            return $this->db->affected_rows();
-            
-        }elseif($data['image'] == 3 && $data['cover'] == 3){
-
-            $userdata = array(
-                'name' => $data['name'],
-                'bio' =>  $data['bio'],
-                'Address' => $data['address'],
-                'birthdate' => $data['birthdate']
-            );
-
-            $this->db->set($userdata);
-            $this->db->where('username', $username);
-            $this->db->update('profile');
-            return $this->db->affected_rows();
-
+        }elseif($data['cover']){
+    
+                $this->db->set('cover',$data['cover']);
+                $this->db->where('username', $username);
+                $this->db->update('profile');
+                return $this->db->affected_rows();
+        
         }else{
-
             $userdata = array(
-                'image' => $data['image'],
-                'cover' => $data['cover'],
                 'name' => $data['name'],
                 'bio' => $data['bio'],
                 'Address' => $data['address'],
