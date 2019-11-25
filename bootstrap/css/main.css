@@ -9,7 +9,6 @@ body {
 	width: 100%;
 	background-color: white;
 }
-
 .main-container {
 	display: flex;
 	min-height: 100%;
@@ -56,8 +55,8 @@ li button.logout-btn:hover {
 	margin: 20px;
 }
 .fa-home,
-.fa-user,
-.fa-outdent {
+.fa-cogs,
+.fa-arrow-circle-left {
 	font-size: 30px;
 	margin: 10px;
 }
@@ -253,8 +252,7 @@ img.profile-img {
 	margin: 1px;
 	border: 3px solid #379cdf;
 }
-
-.sidebar {
+g .sidebar {
 	flex: 1.2;
 	background-color: white;
 }
@@ -301,16 +299,12 @@ img.profile-img {
 	margin-left: 10px;
 }
 
-img.cover {
-	height: 250px;
-	z-index: -1;
-}
 img.profile-pic {
-	width: 100px;
-	height: 100px;
+	width: 130px;
+	height: 130px;
 	background-color: white;
 	border: 5px solid white;
-	margin-top: -150px;
+	margin-top: -200px;
 	margin-left: 20px;
 }
 .bio {

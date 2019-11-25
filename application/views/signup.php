@@ -1,5 +1,5 @@
 <body>
-    <main class="h-100 mt-5">
+    <main class="h-100 mt-4">
         <div class="row w-75 m-auto main-card">
 
             <div class="col-md-6 p-0 right-card">
@@ -7,7 +7,7 @@
                     <form action="" method="POST">
                         <div class="card-body card-main">
                                 <div class="form-group text-center">
-                                    <img src="<? echo base_url();?>images/logo.png" class="logo mb-2" width="50" height="40">
+                                <a href="<? echo base_url();?>"><img src="<? echo base_url();?>images/logo.png" class="logo mb-2" width="50" height="40"></a>
                                     <h3 class="text-primary font-weight-bolder">Join to ShoutOut Today</h3>                        
                                 </div>
                                 <div class="form-group">

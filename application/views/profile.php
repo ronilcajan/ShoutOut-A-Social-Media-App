@@ -1,114 +1,130 @@
 <body>
-    <div class="main-container">
-        <header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 pl-5 border-right">
             <? $this->load->view('templates/navs');?>
-        </header>
-        
-        <main class="w-100">
-            <div class="home position-fixed">
-                <a href='<? echo base_url();?>home'><i class="fas fa-arrow-left"></i></a><p>Profile</p>
+        </div>
+    
+        <div class="col-6 pl-0 pr-0" style="background-color: #FFCCCB;">
+            <a href='<? echo base_url();?>home'>
+            <div class="bg-secondary position-fixed home-top w-100 border-bottom" style="height:50px; z-index:1;">
+                <h4><i class="fas fa-arrow-left"></i></h4>
             </div>
-            <? if(isset($success)){ ?>
-            <div class='alert alert-success alert-dismissible fade show' role='alert'>
-                <small><? echo $error_message; ?></small>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <? } ?>
-            <div class="profile-info pb-2">
-                <img class="img-fluid w-100 mt-5 pt-1 cover" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
+            </a>
+            <div class="col p-0">
+                <img class="img-fluid w-100 mt-5 h-75" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
                 <img class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/>
-                <div class="bio">
-                    <p class="font-weight-bold mr-1"><? echo $profile['name'];?></p>
-                    <p class="usr-txt">@<? echo $profile['username'];?></p>
-                    <button class="mr-1" data-toggle="modal" data-target="#exampleModalLong">Edit Profile</button>
+                <div class="card bg-secondary ml-1 mr-1">
+                    <div class="card-header text-primary font-weight-bold">Personal Info
+                    <button style="float:right;" class="btn btn-primary rounded-pill shadow" data-toggle="modal" data-target="#exampleModalLong">Edit Profile</button>
+
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title font-weight-bold"><? echo $profile['name'];?></h4>
+                        <p class="card-text">Bio : <? echo $profile['bio'];?></p>
+                        <p class="card-text">Location : <? echo $profile['address'];?></p>
+                        <p class="card-text">Birthday : <? $time = strtotime($profile['birthdate']); echo date("M d, Y",$time);?></p>
+                    </div>
                 </div>
-                <div class="my-bio">
-                    <table class="table-responsive w-100">
-                        <tbody>
-                            <tr>
-                                <td><div style="width:0px;"><i class="fas fa-users text-danger"></i></div></td>
-                                <td>Bio</td>
-                                <td><? echo $profile['bio'];?></td>
-                            </tr>
-                            <tr>
-                                <td><div style="width:0px;"><i class="fas fa-map-marker text-danger"></i></div></td>
-                                <td>Location</td>
-                                <td><? echo $profile['address'];?></td>
-                            </tr>
-                            <tr>
-                                <td><div style="width:0px;"><i class="fas fa-calendar text-danger"></i></div></td>
-                                <td>Born on</td>
-                                <td><? $time = strtotime($profile['birthdate']); echo date("M d, Y",$time);?></td> 
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> 
-            </div>
-            <div class="my-shout">
-                <?if(!empty($post)){
-                    foreach($post as $k => $posts){?>
-                    <div class="user-post mt-5">
-                        <div class="form-group">
-                            <div class="user-details">
-                                <img class="logo-img rounded-circle border mr-2" src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
-                                <div class="namess">
-                                    <h6 class="name-post"><? echo $posts['name']; ?></h6>
-                                    <small class="text-muted">@<? echo $posts['username'];?>  <? $time = strtotime($posts['date']); echo date("M d, Y",$time);?></small>
+                <div class="col pl-1 pr-1">
+                    <div class="card bg-secondary mt-2 shadow-sm">
+                        <div class="card-header font-weight-bold text-primary">Create Post</div>
+                        <div class="card-body">
+                            <form action="" method="POST" id="post-form" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="<? echo base_url().'uploads/'.$profile['image'];?>" class="m-1 rounded-circle border" width="65" height="60"/>
                                 </div>
-                                <div class="dropdown">
-                                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" area-haspopup="true" aria-expanded="false">
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#">Edit</a>
-                                        <a class="dropdown-item" href="<? echo base_url().'delete-post/'.$posts['id'];?>">Remove</a>
-                                    </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control post" name="post" id="exampleTextarea" rows="3" placeholder="What's on your mind?"></textarea>
+                                </div>
+                                <div class="col-md-2" style="height:70px;">
+                                    <label>
+                                        <i class="fas fa-image text-primary" style="cursor:pointer; font-size:70px;"></i>
+                                        <input type='file' name="shout-img" class="shout-img" style="visibility:hidden;"/>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="post-content">
-                                <p class="lead"><? echo $posts['post'];?></p>
+                            <div class="mt-3 text-right">
+                                <button type="submit" id="shout-post" class="btn btn-primary pl-3 pr-3 rounded-pill">Post</button>
                             </div>
-                            <? if(!empty($posts['post-image'])){?>
-                            <div class="w-100">
-                                <img class="border p-1" src="<? echo base_url().'uploads/'.$posts['post-image']; ?>" height="300"/>
-                            </div>
-                            <? }?>
-                            <div class='action'>
-                                <form action="<? echo base_url().'like/'.$posts['id'];?>" method="POST" class="w-50">
-                                    <? if($posts['like_post'] > 0){?>
-                                    <input type='hidden' name="user" value="<? echo $this->session->userdata('username');?>" />
-                                    <button type="submit" class="w-100 text-info"><i class="fas fa-hand-paper mr-2  "></i>Claps<small>(<? echo $posts['like_post'];?>)</small></button>
-                                    
-                                    <?}else{?>
-                                    <input type='hidden' name="user" value="<? echo $this->session->userdata('username');?>" />
-                                    <button type="submit" class="w-100"><i class="fas fa-hand-paper mr-2 "></i>Claps<small>(<? echo $posts['like_post'];?>)</small></button>
-                                    <?}?>
-                                </form>
-                                <button class="w-50"><i class="fas fa-comment mr-2"></i>Comment</button>
-                            </div>
-                            <div class="comment">
-                                <img class="profile-img rounded-circle mr-2" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="40" height="40"/>
-                                <form action="<? echo base_url().'comment/'.$posts['id'];?>" method="POST" class="w-100">
-                                    <input type="text" class="comment-box border-0" name="comment" placeholder="Comment here"/>
-                                    <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>                               
-                                    <button type="submit" class="okay-btn">Okay</button>
-                                </form>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <? 
+                if(!empty($post)){
+                foreach($post as $k => $posts){?>
+                <div class="card bg-secondary mt-3 ml-1 mr-1">
+                    <div class="card-header" style="height:75px">
+                        <img class="rounded-circle border mr-2" src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
+                        <span class=" font-weight-bold"><? echo $posts['name']; ?></span>
+                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="float:right;">
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="<? echo base_url().'delete-post/'.$posts['id'];?>">Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <?}
-                    }else{?>
+                    
+                    <div class="card-body">
+                        <p class="card-text"><? echo $posts['post'];?></p>
+                        <? if(!empty($posts['post_image'])){?>
+                            <div class="w-100 text-center">
+                                <img class="border p-1" src="<? echo base_url().'uploads/'.$posts['post_image']; ?>"/>
+                            </div>
+                        <? }?>
+                        <div class="row w-100 bg-danger mt-3 ml-1">
+                            <div class="col-md-6 pl-0 pr-0">
+                                <form method="post" action="<? echo base_url().'claps/'.$posts['id'];?>">
+                                    <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>
+                                    <? if($posts['claps'] == 0){?>
+                                        <button class="col-md-12 border-0 bg-secondary claps" type="submit">Claps</button>
+                                        <? }else{ ?>
+                                        <button class="col-md-12 border-0 bg-secondary claps text-primary" type="submit">Claps(<? echo $posts['claps'];?>)</button>                                   
+                                    <?}?>       
+                                </form>
+                            </div> 
+                            <? if($posts['comments'] == 0){?>
+                            <button class="col-md-6 border-0 bg-secondary">Comments</button>
+                            <?}else{?>
+                            <button class="col-md-6 border-0 bg-secondary text-primary">Comments(<? echo $posts['comments'];?>)</button>
+                                <?}?>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    <div class="row">
+                            <div class="col-md-1">
+                                <img class="mt-2 rounded-circle border-primary border" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="40" height="40"/>
+                            </div>
+                            <div class="col-md-9">
+                                <form action="<? echo base_url().'comment/'.$posts['id'];?>" method="POST" class="w-100">
+                                    <textarea class="form-control" id="exampleTextarea" name="comment" placeholder="Write something about the post."></textarea>
+                                    <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>                          
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary mt-2 rounded-pill">Comment</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                    <? }
+                    }else{
+                    ?>
                     <div class="mt-5 w-100"><center><h5 class="text-muted font-italic font-weight-light">You don't have any shout.</h5></center></div>
-                        <?}?>
-            </div> 
-        </main>
-    
-        <div class="sidebar">
+                    <?}?>
+                <nav aria-label="Page navigation example">
+                    <p><? echo $links;?></p>
+                </nav>
+            </div>
+        </div>
+        <div class="col-3 bg-light border-left" style="z-index:2;">
             <? $this->load->view('templates/sidebar');?>
         </div>
     </div>
-    
+</div>
     <? $this->load->view('modals/edit_profile');?>
-
-</body>

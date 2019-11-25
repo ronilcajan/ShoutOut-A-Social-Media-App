@@ -28,11 +28,9 @@ class My_model extends CI_Model {
     }
 
     public function get_profile($profile){
-        $userdata = array(
-            'username' => $profile['username']
-        );
 
-        $query = $this->db->get_where('profile', $userdata);
+        $this->db->where('username', $profile);
+        $query = $this->db->get('profile');
         $result = $query->result_array();
 
         if(count($result) > 0){
@@ -41,19 +39,69 @@ class My_model extends CI_Model {
             return null;
         }
     }
-    public function get_my_post($username){
-        $user = $username['username'];
+    public function get_user_profile($profile){
+        $this->db->where('username', $profile);
+        $query = $this->db->get('profile');
+        $result = $query->result_array();
 
-        $this->db->select('*, COUNT(post_id) as like_post');
+        if(count($result) > 0){
+            return $result[0];
+        }else{
+            return null;
+        }
+    }
+    public function user_post_count($user){
+        
+        $this->db->select('*');
         $this->db->from('profile');
         $this->db->join('post','profile.username = post.username');
-        $this->db->where('profile.username',$user);
         $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->where('profile.username',$user);
         $this->db->group_by('post.id');
         $this->db->order_by('date','desc');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function get_user_post($limit,$start,$username){
+
+        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments');
+        $this->db->from('profile');
+        $this->db->join('post','profile.username = post.username');
+        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
+        $this->db->where('profile.username',$username);
+        $this->db->group_by('post.id');
+        $this->db->order_by('date','desc');
+        $this->db->limit($limit,$start);
         $result = $this->db->get();
+        return $result->result_array();
+    }
 
+    public function my_post_count($user){
+        $this->db->select('*');
+        $this->db->from('profile');
+        $this->db->join('post','profile.username = post.username');
+        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->where('profile.username',$user);
+        $this->db->group_by('post.id');
+        $this->db->order_by('date','desc');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
 
+    public function get_my_post($limit,$start,$username){
+
+        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments');
+        $this->db->from('profile');
+        $this->db->join('post','profile.username = post.username');
+        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
+        $this->db->where('profile.username',$username);
+        $this->db->group_by('post.id');
+        $this->db->order_by('date','desc');
+        $this->db->limit($limit,$start);
+        $result = $this->db->get();
         return $result->result_array();
     }
 
@@ -90,16 +138,30 @@ class My_model extends CI_Model {
         }
     }
 
-    public function get_post(){
-
-        $this->db->select('*, COUNT(post_id) as like_post');
+    public function post_count(){
+        $this->db->select('*');
         $this->db->from('post');
         $this->db->join('profile', 'post.username = profile.username');
         $this->db->join('likes', 'likes.post_id=post.id','LEFT');
         $this->db->group_by('post.id');
-        $this->db->order_by('date','desc');
         $query = $this->db->get();
+        return $query->num_rows();
+    }
+    
+    public function get_post($limit, $start){
+
+        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
+        $this->db->from('post');
+        $this->db->join('profile', 'post.username = profile.username');
+        $this->db->join('likes', 'likes.post_id=post.id','LEFT');
+        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
+        $this->db->group_by('post.id');
+        $this->db->order_by('date','desc');
+        $this->db->limit($limit,$start);
+        $query = $this->db->get();
+        
         return $query->result_array();
+
     }
 
     public function insert_post($post){
@@ -117,7 +179,7 @@ class My_model extends CI_Model {
             $data = array(
                 'username' => $post['username'],
                 'post' => $post['post'],
-                'post-image' => $post['image']
+                'post_image' => $post['image']
             );
 
             $this->db->insert('post', $data);
@@ -198,13 +260,13 @@ class My_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
-    public function insert_like($user){
-        $likes = array(
-            'post_id' => $user['post-id'],
+    public function insert_claps($user){
+        $claps = array(
+            'post_id' => $user['claps'],
             'username' => $user['username']
         );
 
-        $this->db->insert('likes', $likes);
+        $this->db->insert('likes', $claps);
 
         return $this->db->affected_rows();
     }
