@@ -12,8 +12,8 @@
             </div>
             </a>
             <div class="col p-0">
-                <img class="img-fluid w-100 mt-5 h-75" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
-                <img class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/>
+                <a data-target="#cover-modal" data-toggle="modal" title="Click to change cover photo" href="#cover-modal" ><img class="img-fluid w-100 mt-5 h-75 cover" title="Click to change cover photo" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/></a>
+                <a data-target="#profile-modal" data-toggle="modal" id="profile-pic" href="#profile-modal" ><img title="Click to change profile photo" class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/></a>
                 <div class="card bg-secondary ml-1 mr-1">
                     <div class="card-header text-primary font-weight-bold">Personal Info
                     <button style="float:right;" class="btn btn-primary rounded-pill shadow" data-toggle="modal" data-target="#exampleModalLong">Edit Profile</button>
@@ -74,7 +74,7 @@
                         <p class="card-text"><? echo $posts['post'];?></p>
                         <? if(!empty($posts['post_image'])){?>
                             <div class="w-100 text-center">
-                                <img class="border p-1" src="<? echo base_url().'uploads/'.$posts['post_image']; ?>"/>
+                                <img class="border p-1 img img-fluid" src="<? echo base_url().'uploads/'.$posts['post_image']; ?>"/>
                             </div>
                         <? }?>
                         <div class="row w-100 bg-danger mt-3 ml-1">
@@ -128,3 +128,5 @@
     </div>
 </div>
     <? $this->load->view('modals/edit_profile');?>
+    
+    

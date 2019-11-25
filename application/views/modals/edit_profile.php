@@ -8,19 +8,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body p-1">
-                <div class="profile-info">
-                    <form action="<? echo base_url();?>edit-profile" method="POST" enctype="multipart/form-data">
-                        <img class="img-fluid w-100 pt-1 cover" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
-                        
-                        <img class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/>
-                        <div class="edit-btn"><label class="rounded-circle p-1">
-                                Edit<input type="file" name="image" style="visibility:hidden;"></label>
-                        </div>
-                        <div class="edit-cover"><label class="rounded-circle p-1">
-                                Edit<input type="file" name="cover" style="visibility:hidden;"></label>
-                        </div>
-                        <div class="modal-bio">
+            <div class="modal-body p-3">
+                    <form action="<? echo base_url();?>edit-profile" method="POST">
                             <div class="form-group">
                                 <label>Name</label>
                                 <textarea class="form-control" name="name" column="30"><? echo $profile['name'];?></textarea>
@@ -37,14 +26,62 @@
                                 <label>Birthday</label><br> 
                                 <input type="date" class="form-control-sm" name="born-date" value="<? $time = strtotime($profile['birthdate']); echo date("Y-m-d",$time);?>"/>
                             </div>
-                        </div> 
-                </div>
             </div>
             <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-info">Save changes</button>
             </div>
             </form> 
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="profile-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">Edit Profile Picture</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="mb-1 img img-fluid" src="<? echo base_url().'uploads/'.$profile['image'];?>"/>
+                <form action="<? echo base_url();?>edit-profile" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="image" class="btn btn-info">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="cover-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">Edit Cover Photo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img class="mb-1 img img-fluid" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
+                <form action="<? echo base_url();?>edit-profile" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="cover" class="btn btn-info">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
