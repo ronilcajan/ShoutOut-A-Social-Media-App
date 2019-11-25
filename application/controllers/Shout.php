@@ -354,28 +354,23 @@ class Shout extends CI_Controller {
 		$config['allowed_types'] = 'jpg|png|jpeg|gif';
 		$config['encrypt_name'] = TRUE;
 
-
         $this->load->library('upload',$config);
 
         if(!$this->upload->do_upload('cover') && !$this->upload->do_upload('image')){
-            
-            $data = array(
+            $userdata = array(
                 'username' => $this->session->userdata('username'),
-                'image' => 3,
-                'cover' => 3,
                 'name' => $this->input->post('name'),
                 'bio' => $this->input->post('bio'),
                 'address' => $this->input->post('address'),
                 'birthdate' => $this->input->post('born-date')
             );
 
-            $this->load->model('my_model');
-            $upload = $this->my_model->edit_profile($data);
+            $upload = $this->my_model->edit_profile($userdata);
 
             if($upload == TRUE){
                 redirect('profile');
             }
-        }elseif(empty($_FILES['image']['name'])){
+        }elseif(!empty($_FILES['cover']['name'])){
 
             $data = $this->upload->data();
 			//Resize and Compress Image
@@ -391,23 +386,17 @@ class Shout extends CI_Controller {
 			$this->load->library('image_lib', $config);
             $this->image_lib->resize();
 
-                $data = array(
-                    'username' => $this->session->userdata('username'),
-                    'image' => 1,
-                    'cover' => $data['file_name'],
-                    'name' => $this->input->post('name'),
-                    'bio' => $this->input->post('bio'),
-                    'address' => $this->input->post('address'),
-                    'birthdate' => $this->input->post('born-date')
-                );
+            $userdata = array(
+                'username' => $this->session->userdata('username'),
+                'cover' => $data['file_name']
+            );
 
-                $upload = $this->my_model->edit_profile($data);
+            $upload = $this->my_model->edit_profile($userdata);
+            if($upload == TRUE){
+                redirect('profile');
+            }
 
-                if($upload == TRUE){
-                    redirect('profile');
-                }
-
-        }elseif(empty($_FILES['cover']['name'])){
+        }else{
 
             $data = $this->upload->data();
 			//Resize and Compress Image
@@ -418,64 +407,37 @@ class Shout extends CI_Controller {
 			$config['quality'] = '60%';
 			$config['width'] = 600;
 			$config['height'] = 400;
-            $config['new_image'] = './uploads/'.$data['file_name'];
-            
-                $data = array(
-                    'username' => $this->session->userdata('username'),
-                    'image' => $data['file_name'],
-                    'cover' => 2,
-                    'name' => $this->input->post('name'),
-                    'bio' => $this->input->post('bio'),
-                    'address' => $this->input->post('address'),
-                    'birthdate' => $this->input->post('born-date')
-                );
+			$config['new_image'] = './uploads/'.$data['file_name'];
 
-                $this->load->model('my_model');
-                $upload = $this->my_model->edit_profile($data);
+			$this->load->library('image_lib', $config);
+            $this->image_lib->resize();
 
-                if($upload == TRUE){
-                    redirect('profile');
-                }
+            $userdata = array(
+                'username' => $this->session->userdata('username'),
+                'image' => $data['file_name']
+            );
 
-        }else{
+            $upload = $this->my_model->edit_profile($userdata);
+            if($upload == TRUE){
+                redirect('profile');
+            }
+        }
+    }
 
-                $data = $this->upload->data();
-			//Resize and Compress Image
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = './uploads/'.$data['file_name'];
-                $config['create_thumb'] = FALSE;
-                $config['maintain_ratio'] = FALSE;
-                $config['quality'] = '60%';
-                $config['width'] = 600;
-                $config['height'] = 400;
-                $config['new_image'] = './uploads/'.$data['file_name'];
+    public function search(){
 
-                $data1 = $this->upload->data();
-			//Resize and Compress Image
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = './uploads/'.$data1['file_name'];
-                $config['create_thumb'] = FALSE;
-                $config['maintain_ratio'] = FALSE;
-                $config['quality'] = '60%';
-                $config['width'] = 600;
-                $config['height'] = 400;
-                $config['new_image'] = './uploads/'.$data1['file_name'];
+        $result = $this->my_model->get_profile($this->session->userdata('username'));
 
-                    $data = array(
-                        'username' => $this->session->userdata('username'),
-                        'image' => $data,
-                        'cover' => $data1,
-                        'name' => $this->input->post('name'),
-                        'bio' => $this->input->post('bio'),
-                        'address' => $this->input->post('address'),
-                        'birthdate' => $this->input->post('born-date')
-                    );
 
-                    $upload = $this->my_model->edit_profile($data);
+        if(!is_null($result)){
+            $data['profile'] = array(
+                'image' => $result['image']
+            );
 
-                    if($upload == TRUE){
-                        redirect('profile');
-                    }
+            $this->load->view('templates/main');
+            $this->load->view('search_result',$data);
+            $this->load->view('templates/footer');
+
         }
     }
 
