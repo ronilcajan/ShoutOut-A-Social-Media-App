@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                    <div class="row">
+                        <div class="row">
                             <div class="col-md-1">
                                 <img class="mt-2 rounded-circle border-primary border" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="40" height="40"/>
                             </div>
