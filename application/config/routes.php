@@ -16,6 +16,7 @@ $route['profile/(:num)'] = 'shout/profile/$1';
 $route['profile'] = 'shout/profile';
 $route['username/(:any)'] = 'shout/user_profile/$1';
 $route['username'] = 'shout/user_profile';
+$route['search'] = 'shout/search';
 $route['edit-profile'] = 'shout/edit_profile';
 $route['post-submit'] = 'shout/post_submit';
 $route['shout/home/post-submit'] = 'shout/post_submit';
