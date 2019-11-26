@@ -160,6 +160,7 @@ class Shout extends CI_Controller {
 
         $result = $this->my_model->get_profile($this->session->userdata('username'));
 
+        $data['people'] = $this->my_model->get_people();
 
         if(!is_null($result)){
             $data['profile'] = array(
@@ -462,7 +463,7 @@ class Shout extends CI_Controller {
         $data['links'] = $this->pagination->create_links();
 
         $data['people'] = $this->my_model->search_people($search);
-        
+
         $result = $this->my_model->get_profile($this->session->userdata('username'));
 
         if(!is_null($result)){
