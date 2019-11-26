@@ -13,7 +13,7 @@
             </a>
             <div class="col p-0">
                 <img class="img-fluid w-100 mt-5 h-75" src="<? echo base_url().'uploads/'.$user_profile['cover'];?>"/>
-                <img class="user_profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$user_profile['image'];?>"/>
+                <img class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$user_profile['image'];?>"/>
                 <div class="card bg-secondary ml-1 mr-1">
                     <div class="card-header text-primary font-weight-bold">Personal Info
 
@@ -31,7 +31,9 @@
                 <div class="card bg-secondary mt-3 ml-1 mr-1">
                     <div class="card-header" style="height:75px">
                         <img class="rounded-circle border mr-2" src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
-                        <span class=" font-weight-bold"><? echo $posts['name']; ?></span>
+                        <a href="<? echo base_url().'username/'.$posts['user'];?>">
+                            <span class=" font-weight-bold"><? echo $posts['name']; ?></span>
+                        </a>
                     </div>
                     
                     <div class="card-body">
@@ -67,7 +69,7 @@
                             <div class="col-md-9">
                                 <form action="<? echo base_url().'comment/'.$posts['id'];?>" method="POST" class="w-100">
                                     <textarea class="form-control" id="exampleTextarea" name="comment" placeholder="Write something about the post."></textarea>
-                                    <input type="text" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>                          
+                                    <input type="hidden" value="<? echo $_SERVER['PATH_INFO']; ?>" name="identifier"/>                          
                             </div>
                             <div class="col-md-2">
                                 <button type="submit" class="btn btn-primary mt-2 rounded-pill">Comment</button>

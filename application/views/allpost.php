@@ -6,7 +6,7 @@
         </div>
         <div class="col-6 pl-0 pr-0" style="background-color: #FFCCCB;">
             <div class="bg-secondary position-fixed home-top w-100 border-bottom" style="height:50px; z-index:1;">
-                <h4 class="pb-2"><i class="fas fa-home"></i></h4>
+                <h4><i class="fas fa-home"></i></h4>
             </div>
             <div class="col mt-5 pt-1 pl-1 pr-1">
                 <div class="card bg-secondary mt-2 shadow-sm">
@@ -36,13 +36,13 @@
             </div>
             <div class="col pl-1 pr-1">
                 <div class="card bg-secondary mt-2 shadow-sm">
-                    <div class="card-header font-weight-bold text-primary">Connections</div>
+                    <div class="card-header font-weight-bold text-primary">People you may know</div>
                     <div class="card-body">
                         <div class="row">
-                            <img src="<? echo base_url();?>images/login.jpg" class="rounded ml-3 " width="140" height="200"/>
-                            <img src="<? echo base_url();?>images/signup.jpg" class="rounded ml-3" width="140" height="200"/>
-                            <img src="<? echo base_url();?>images/login.jpg" class="rounded ml-3" width="140" height="200"/>
-                            <img src="<? echo base_url();?>images/signup.jpg" class="rounded ml-3" width="135" height="200"/>
+                            <img src="<? echo base_url();?>images/login.jpg" class="img img-fluid rounded ml-3 " width="140" height="200"/>
+                            <img src="<? echo base_url();?>images/signup.jpg" class="img img-fluid rounded ml-3" width="140" height="200"/>
+                            <img src="<? echo base_url();?>images/login.jpg" class="img img-fluid rounded ml-3" width="140" height="200"/>
+                            <img src="<? echo base_url();?>images/signup.jpg" class="img img-fluid rounded ml-3" width="135" height="200"/>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,9 @@
                 <div class="card bg-secondary mt-3" >
                     <div class="card-header" style="height:75px">
                         <img class="rounded-circle border mr-2" src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
-                        <a href="<? echo base_url().'username/'.$posts['user'];?>"><span class=" font-weight-bold"><? echo $posts['name']; ?></span></a>
+                        <a href="<? echo base_url().'username/'.$posts['user'];?>">
+                            <span class=" font-weight-bold"><? echo $posts['name']; ?></span>
+                        </a>
                     </div>
                     <div class="card-body">
                         <p class="card-text"><? echo $posts['post'];?></p>

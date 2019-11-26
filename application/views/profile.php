@@ -58,7 +58,9 @@
                 <div class="card bg-secondary mt-3 ml-1 mr-1">
                     <div class="card-header" style="height:75px">
                         <img class="rounded-circle border mr-2" src="<? echo base_url().'uploads/'.$posts['image']; ?>" width="50" height="50"/>
-                        <span class=" font-weight-bold"><? echo $posts['name']; ?></span>
+                        <a href="<? echo base_url().'username/'.$posts['user'];?>">
+                            <span class=" font-weight-bold"><? echo $posts['name']; ?></span>
+                        </a>
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="float:right;">
                             <div class="btn-group" role="group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
