@@ -31,3 +31,6 @@ img.profile-pic {
 a#profile-pic:hover {
 	opacity: 0.7;
 }
+img.img-people:hover {
+	opacity: 0.7;
+}
