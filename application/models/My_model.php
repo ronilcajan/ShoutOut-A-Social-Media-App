@@ -50,6 +50,41 @@ class My_model extends CI_Model {
             return null;
         }
     }
+    public function search_count($search){
+        
+        $this->db->select('*');
+        $this->db->from('profile');
+        $this->db->join('post','profile.username = post.username');
+        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->like('profile.username',$search);
+        $this->db->group_by('post.id');
+        $this->db->order_by('date','desc');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function search_post($limit,$start,$search){
+
+        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
+        $this->db->from('profile');
+        $this->db->join('post','profile.username = post.username');
+        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
+        $this->db->like('profile.name',$search);
+        $this->db->group_by('post.id');
+        $this->db->order_by('date','desc');
+        $this->db->limit($limit,$start);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+    public function search_people($search){
+
+        $this->db->like('name', $search);
+        $this->db->limit(4,0);
+        $result = $this->db->get('profile');
+        return $result->result_array();
+    }
+
     public function user_post_count($user){
         
         $this->db->select('*');

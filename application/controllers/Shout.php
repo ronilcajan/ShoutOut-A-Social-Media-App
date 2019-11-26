@@ -175,7 +175,7 @@ class Shout extends CI_Controller {
     }
 
     public function user_profile($username){
-        $this->check_auth('profile');
+        $this->check_auth('user_profile');
 
         if($username != $this->session->userdata('username')){    
             $config['base_url'] = base_url().'shout/profile';
@@ -292,6 +292,7 @@ class Shout extends CI_Controller {
         }
 
     }
+
 
     public function post_submit(){
 
@@ -426,8 +427,43 @@ class Shout extends CI_Controller {
 
     public function search(){
 
-        $result = $this->my_model->get_profile($this->session->userdata('username'));
+        $this->check_auth('search');
+        $search = $this->input->post('search');
 
+        $config['base_url'] = base_url().'shout/search';
+        $config['total_rows'] = $this->my_model->search_count($search);
+        $config['per_page'] = 10;
+        $config['uri_segment'] = "3";
+        $config['full_tag_open'] = '<ul class="pagination pagination-sm justify-content-center">';
+        $config['full_tag_close'] = ' </ul>';
+        $config['attributes'] = ['class' => 'page-link'];
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="page-item">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="page-item active"><a href="#" class="page-link">';
+        $config['cur_tag_close'] = '<span class="sr-only">(current)</span></a></li>';
+        $config['num_tag_open'] = '<li class="page-item">';
+        $config['num_tag_close'] = '</li>';
+        
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) :0;
+        
+        $data['post'] = $this->my_model->search_post($config['per_page'], $page, $search);
+
+        $data['links'] = $this->pagination->create_links();
+
+        $data['people'] = $this->my_model->search_people($search);
+        
+        $result = $this->my_model->get_profile($this->session->userdata('username'));
 
         if(!is_null($result)){
             $data['profile'] = array(
