@@ -39,10 +39,11 @@
                     <div class="card-header font-weight-bold text-primary">People you may know</div>
                     <div class="card-body">
                         <div class="row">
-                            <img src="<? echo base_url();?>images/login.jpg" class="img img-fluid rounded ml-3 " width="140" height="200"/>
-                            <img src="<? echo base_url();?>images/signup.jpg" class="img img-fluid rounded ml-3" width="140" height="200"/>
-                            <img src="<? echo base_url();?>images/login.jpg" class="img img-fluid rounded ml-3" width="140" height="200"/>
-                            <img src="<? echo base_url();?>images/signup.jpg" class="img img-fluid rounded ml-3" width="135" height="200"/>
+                            <? foreach($people as $k => $person){?>
+                            <a href="<? echo base_url().'username/'.$person['username'];?>" >
+                            <img src="<? echo base_url().'/uploads/'.$person['image'];?>" class="img rounded img-people ml-3" width="140" height="200"/>
+                            </a>
+                            <?}?>
                         </div>
                     </div>
                 </div>
