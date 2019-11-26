@@ -1,7 +1,7 @@
 
 <ul class="nav flex-column w-25 position-fixed">
     <li class="nav-item">
-        <a class=" nav-link navbar-brand" href="#">
+        <a class=" nav-link navbar-brand" href="<? echo base_url();?>home">
             <h3 class="font-weight-bold">
                 <img src="<? echo base_url();?>images/logo.png" class="logo mb-2" width="50" height="40"> 
                 ShoutOut
