@@ -18,7 +18,7 @@
                 <div class="card bg-secondary mt-3" >
                     <div class="card-body font-weight-bold form-inline">
                         <img class="rounded-circle border mr-2" src="<? echo base_url().'uploads/'.$person['image'];?>" width="50" height="50"/>
-                        <a href="<? echo base_url().'username/'.$person['name'];?>">
+                        <a href="<? echo base_url().'username/'.$person['username'];?>">
                             <p class="mt-3"><? echo $person['name'];?></p>
                         </a>
                     </div>
