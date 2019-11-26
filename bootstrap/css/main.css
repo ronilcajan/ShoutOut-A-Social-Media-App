@@ -12,7 +12,8 @@ body {
 
 /* ================ Profile ===================  */
 
-.fa-arrow-left {
+.fa-arrow-left,
+.fa-home {
 	color: #ec3e9b;
 	font-size: 20px;
 	margin-top: 15px;
