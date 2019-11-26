@@ -199,6 +199,16 @@ class My_model extends CI_Model {
 
     }
 
+    public function get_people(){
+        $this->db->select('*');
+        $this->db->from('profile');
+        $this->db->limit(4);
+        $this->db->order_by('rand()');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     public function insert_post($post){
 
         if(empty($post['image'])){
@@ -224,7 +234,7 @@ class My_model extends CI_Model {
     }
 
     public function edit_profile($data){
-        var_dump($data);
+
         $username = $data['username'];
 
         if($data['image']){
