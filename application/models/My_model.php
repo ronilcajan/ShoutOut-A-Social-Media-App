@@ -65,7 +65,7 @@ class My_model extends CI_Model {
 
     public function get_user_post($limit,$start,$username){
 
-        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments');
+        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
         $this->db->from('profile');
         $this->db->join('post','profile.username = post.username');
         $this->db->join('likes', 'likes.post_id = post.id','LEFT');
@@ -92,7 +92,7 @@ class My_model extends CI_Model {
 
     public function get_my_post($limit,$start,$username){
 
-        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments');
+        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
         $this->db->from('profile');
         $this->db->join('post','profile.username = post.username');
         $this->db->join('likes', 'likes.post_id = post.id','LEFT');
