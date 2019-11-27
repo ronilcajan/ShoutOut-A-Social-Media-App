@@ -122,6 +122,28 @@ class Shout extends CI_Controller {
             redirect('login');
         }
     }
+
+    public function each_post($id){
+
+        $this->check_auth('home');
+        
+        $data['post'] = $this->my_model->each_post($id);
+        $data['comments'] = $this->my_model->comments($id);
+
+        $result = $this->my_model->get_profile($this->session->userdata('username'));
+
+        if(!is_null($result)){
+            $data['profile'] = array(
+                'image' => $result['image']
+            );
+
+            $this->load->view('templates/main');
+            $this->load->view('post',$data);
+            $this->load->view('templates/footer');
+
+        }
+
+    }
     
     public function home(){
 
@@ -532,13 +554,18 @@ class Shout extends CI_Controller {
             $url = $this->input->post('identifier');
             if($url == '/profile' || strpos($url,'/profile') ){
                 redirect(base_url('profile'));
+
             }elseif(strpos($url,'username')){
                 $user = str_replace('/username','',$url);
-
                 redirect('username'.$user);
+
+            }elseif(strpos($url, 'shout')){
+                $post = str_replace('/shout','',$url);
+                redirect('shout'.$post);
+
+            }else{
+                redirect(base_url('home'));
             }
-            
-            redirect(base_url('home'));
         }
     }
 
