@@ -15,6 +15,7 @@ toastr.options = {
 	showMethod: "fadeIn",
 	hideMethod: "fadeOut"
 };
+
 $(document).ready(function(e) {
 	// =============  Signup Ajax here ==================
 	$(".signup-btn").click(function(e) {
@@ -150,23 +151,4 @@ $(document).ready(function(e) {
 		}
 		return false;
 	});
-
-	// $(".claps").click(function(e) {
-	// 	e.preventDefault();
-	// 	var claps = $(".clap-id").val();
-	// 	alert(claps);
-	// 	$.ajax({
-	// 		type: "post",
-	// 		url: "claps/" + claps,
-	// 		dataType: "JSON",
-	// 		cache: false,
-	// 		success: function(response) {
-	// 			if (response.success == true) {
-	// 				toastr.success(response.messages);
-	// 			} else {
-	// 				toastr.error(response.messages);
-	// 			}
-	// 		}
-	// 	});
-	// });
 });
