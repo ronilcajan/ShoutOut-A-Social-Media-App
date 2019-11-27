@@ -31,7 +31,7 @@
                 </div>
             <div class="col-md-6 text-center left-card p-0">
                 <div class="h-100 logo-container">
-                    <img class="img-login img-fluid" src="<? echo base_url();?>images/login.jpg"/>
+                    <img class="img-login img img-fluid" src="<? echo base_url();?>images/login.jpg"/>
                 </div>
             </div>
         </div>
