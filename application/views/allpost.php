@@ -57,6 +57,7 @@
                             <span class=" font-weight-bold"><? echo $posts['name']; ?></span>
                         </a>
                     </div>
+                    <a href="<? echo base_url().'shout/'.$posts['id'];?>" id="body-post" style="text-decoration:none;">
                     <div class="card-body">
                         <p class="card-text"><? echo $posts['post'];?></p>
                         <? if(!empty($posts['post_image'])){?>
@@ -64,6 +65,8 @@
                                 <img class="img img-fluid border p-1" src="<? echo base_url().'uploads/'.$posts['post_image']; ?>"/>
                             </div>
                         <? }?>
+
+                    </a>
                         <div class="row w-100 bg-danger mt-3 ml-1">
                             <div class="col-md-6 pl-0 pr-0">
                                 <form method="post" action="<? echo base_url().'claps/'.$posts['id'];?>">                        
@@ -77,7 +80,7 @@
                             <? if($posts['comments'] == 0){?>
                             <button class="col-md-6 border-0 bg-secondary">Comments</button>
                             <?}else{?>
-                            <button class="col-md-6 border-0 bg-secondary text-primary">Comments(<? echo $posts['comments'];?>)</button>
+                            <button class="col-md-6 border-0 bg-secondary text-primary" onclick="location.href='<? echo base_url().'shout/'.$posts['id'];?>'">Comments(<? echo $posts['comments'];?>)</button>
                                 <?}?>
                         </div>
                     </div>
