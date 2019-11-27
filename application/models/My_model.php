@@ -27,6 +27,30 @@ class My_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    public function each_post($id){
+
+        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
+        $this->db->from('profile');
+        $this->db->join('post','profile.username = post.username');
+        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
+        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
+        $this->db->where('post.id',$id);
+        $this->db->group_by('post.id');
+        $result = $this->db->get();
+        return $result->result_array();
+
+    }
+    public function comments($id){
+
+        $this->db->select('*');
+        $this->db->from('comments');
+        $this->db->join('profile','profile.username = comments.username');
+        $this->db->where('comments.post_id',$id);
+        $result = $this->db->get();
+        return $result->result_array();
+
+    }
+
     public function get_profile($profile){
 
         $this->db->where('username', $profile);
