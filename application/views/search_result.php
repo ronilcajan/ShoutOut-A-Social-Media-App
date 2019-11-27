@@ -83,4 +83,3 @@
         </div>
     </div>
 </div>
-<? $this->load->view('modals/shoutout'); ?>
