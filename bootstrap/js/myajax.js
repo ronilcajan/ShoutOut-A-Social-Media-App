@@ -151,4 +151,46 @@ $(document).ready(function(e) {
 		}
 		return false;
 	});
+
+	//  ============= Change Username Ajax here ==================
+
+	$("#change_pass").click(function(e) {
+		e.preventDefault();
+
+		var pass1 = $("#inputpass").val();
+		var pass2 = $("#inputconf").val();
+
+		if ($.trim(pass1) == false && $.trim(pass2) == false) {
+			toastr.warning("Please enter something!");
+		}else if (pass1 != pass2) {
+			toastr.warning("Password did not match!");
+		} else {
+			$.ajax({
+				type: "POST",
+				url: "change-password",
+				dataType: "json",
+				data: {
+					password1:pass1,
+					password2:pass2
+				},
+				cache: false,
+				success: function(response) {
+					if(response.success){
+						toastr.success(response.message);
+						$('#change-password').modal('hide');
+
+						setTimeout(function() {
+							window.location = 'logout';
+						}, 4000);
+					
+					}else{
+						toastr.error(response.message);
+					}
+				}
+			});
+		}
+		return false;
+	});
+
+
 });
