@@ -84,3 +84,37 @@
             </div>
         </div>
     </div>
+
+     <div class="modal fade" id="change-password">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="form-group">
+                          <label class="col-form-label" for="inputDefault">Username</label>
+                          <input type="text" class="form-control" placeholder="Default input" id="inputDefault1" readonly value="<? echo $this->session->userdata('username');?>">
+                    </div>
+                    <div class="form-group">
+                          <label class="col-form-label" for="inputUsername">Enter New Password</label>
+                          <input type="password" class="form-control" placeholder="Enter New Password" id="inputpass">
+                    </div>
+                    <div class="form-group">
+                          <label class="col-form-label" for="inputPassword">Confirm Password</label>
+                          <input type="password" class="form-control" placeholder="Confirm Password" id="inputconf">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="change_pass">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
