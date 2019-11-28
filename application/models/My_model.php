@@ -318,5 +318,13 @@ class My_model extends CI_Model {
         $this->db->insert('comments', $userdata);
         return $this->db->affected_rows();
     }
+
+    public function change_pass($data){
+
+        $this->db->set('password', $data);
+        $this->db->where('username', $this->session->userdata('username'));
+        $this->db->update('accounts');
+        return $this->db->affected_rows();
+    }    
 }
 ?>
