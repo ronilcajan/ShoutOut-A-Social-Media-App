@@ -570,7 +570,7 @@ class Shout extends CI_Controller {
         if(!is_null($response)){
             
             $validation['success'] = true;
-            $validation['message'] = "Password successfully changed!You will be logged out!";
+            $validation['message'] = "Password successfully changed. You will be logged out!";
 
         }else{
 
