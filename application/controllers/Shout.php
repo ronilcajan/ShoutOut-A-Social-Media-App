@@ -9,12 +9,6 @@ class Shout extends CI_Controller {
         $this->load->view('home');
         $this->load->view('templates/footer');
     }
-    public function allpost()
-	{
-        $this->load->view('templates/main');
-        $this->load->view('allpost');
-        $this->load->view('templates/footer');
-    }
     
 	public function about(){
 		$this->load->view('templates/header-about');
@@ -567,6 +561,25 @@ class Shout extends CI_Controller {
                 redirect(base_url('home'));
             }
         }
+    }
+    public function change_pass(){
+        $validation = array('success' => false, 'message' => array());
+    
+        $response = $this->my_model->change_pass(sha1($this->input->post('password2')));
+
+        if(!is_null($response)){
+            
+            $validation['success'] = true;
+            $validation['message'] = "Password successfully changed!You will be logged out!";
+
+        }else{
+
+            $validation['success'] = false;
+            $validation['message'] = "Password is incorrect!";
+        }
+
+        echo json_encode($validation);
+        
     }
 
     public function logout(){
