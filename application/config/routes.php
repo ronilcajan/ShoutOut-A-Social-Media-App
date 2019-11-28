@@ -21,6 +21,7 @@ $route['search/(:any)'] = 'shout/search/$1';
 $route['search'] = 'shout/search';
 $route['shout/(:num)'] = 'shout/each_post/$1';
 $route['post-submit'] = 'shout/post_submit';
+$route['edit-profile'] = 'shout/edit_profile';
 $route['shout/home/post-submit'] = 'shout/post_submit';
 $route['delete-post/(:num)'] = 'shout/delete_post/$1/';
 $route['claps/(:num)'] = 'shout/claps/$1';
