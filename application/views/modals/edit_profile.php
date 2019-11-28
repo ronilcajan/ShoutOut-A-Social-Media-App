@@ -75,7 +75,6 @@
                 <img class="mb-1 img img-fluid" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
                 <form action="<? echo base_url();?>edit-profile" method="POST" enctype="multipart/form-data">
                     <input type="file" name="cover" class="btn btn-info">
-                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save changes</button>
