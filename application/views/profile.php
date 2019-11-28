@@ -12,8 +12,12 @@
             </div>
             </a>
             <div class="col p-0">
-                <a data-target="#cover-modal" data-toggle="modal" title="Click to change cover photo" href="#cover-modal" ><img class="img-fluid w-100 mt-5 h-75 cover" title="Click to change cover photo" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/></a>
-                <a data-target="#profile-modal" data-toggle="modal" id="profile-pic" href="#profile-modal" ><img title="Click to change profile photo" class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/></a>
+                <a data-target="#cover-modal" data-toggle="modal" title="Click to change cover photo" href="#cover-modal" >
+                    <img class="img-fluid w-100 mt-5 h-75 cover" title="Click to change cover photo" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
+                </a>
+                <a data-target="#profile-modal" data-toggle="modal" id="profile-pic" href="#profile-modal" >
+                    <img title="Click to change profile photo" class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/>
+                </a>
                 <div class="card bg-secondary ml-1 mr-1">
                     <div class="card-header text-primary font-weight-bold">Personal Info
                     <button style="float:right;" class="btn btn-primary rounded-pill shadow" data-toggle="modal" data-target="#exampleModalLong">Edit Profile</button>
