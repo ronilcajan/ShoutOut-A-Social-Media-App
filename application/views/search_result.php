@@ -85,3 +85,4 @@
         </div>
     </div>
 </div>
+ <? $this->load->view('modals/edit_profile');?>

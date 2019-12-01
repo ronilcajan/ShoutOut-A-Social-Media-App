@@ -113,3 +113,4 @@
     </div>
 </div>
 <? $this->load->view('modals/shoutout'); ?>
+ <? $this->load->view('modals/edit_profile');?>

@@ -380,7 +380,9 @@ class Shout extends CI_Controller {
                 'name' => $this->input->post('name'),
                 'bio' => $this->input->post('bio'),
                 'address' => $this->input->post('address'),
-                'birthdate' => $this->input->post('born-date')
+                'birthdate' => $this->input->post('born-date'),
+                'image' => "",
+                'cover' => ""
             );
 
             $upload = $this->my_model->edit_profile($userdata);
