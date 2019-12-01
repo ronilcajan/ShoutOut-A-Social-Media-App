@@ -562,6 +562,75 @@ class Shout extends CI_Controller {
             }
         }
     }
+
+    public function edit_post($id){
+
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif';
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload',$config);
+
+        if(!$this->upload->do_upload('img-post')){
+
+            $userdata = array(
+                'post' => $this->input->post('text-post'),
+                'id' => $id,
+                'image' => ""
+            );
+
+            $response = $this->my_model->edit_post($userdata);
+
+            if(!is_null($response)){
+            
+                redirect('profile');
+
+            }else{
+
+                var_dump($response);
+            }
+
+        }else{
+
+            $data = $this->upload->data();
+            //Resize and Compress Image
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = './uploads/'.$data['file_name'];
+            $config['create_thumb'] = FALSE;
+            $config['maintain_ratio'] = FALSE;
+            $config['quality'] = '60%';
+            $config['width'] = 600;
+            $config['height'] = 400;
+            $config['new_image'] = './uploads/'.$data['file_name'];
+
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+
+            $userdata = array(
+                'post' => $this->input->post('text-post'),
+                'image' => $data['file_name'],
+                'id' => $id
+            );
+
+            $upload = $this->my_model->edit_post($userdata);
+
+            if($upload == TRUE){
+                
+                redirect('profile');
+
+            }else{
+                
+                var_dump($upload);
+            }
+
+        }
+
+        
+
+        echo json_encode($validation);
+    }
+
     public function change_pass(){
         $validation = array('success' => false, 'message' => array());
     

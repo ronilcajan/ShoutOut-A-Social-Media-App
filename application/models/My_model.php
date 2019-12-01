@@ -325,6 +325,31 @@ class My_model extends CI_Model {
         $this->db->where('username', $this->session->userdata('username'));
         $this->db->update('accounts');
         return $this->db->affected_rows();
-    }    
+    }
+
+    public function edit_post($data){
+
+        $userdata = array(
+            'post' => $data['post'],
+            'post_image' => $data['image']
+        );
+
+        if(empty($data['image'])){
+            $this->db->set('post', $data['post']);
+            $this->db->where('id', $data['id']);
+            $this->db->update('post');
+        }elseif (empty($data['post'])) {
+            $this->db->set('post_image', $data['image']);
+            $this->db->where('id', $data['id']);
+            $this->db->update('post');
+        }else{
+            $this->db->set($userdata);
+            $this->db->where('id', $data['id']);
+            $this->db->update('post');
+        }
+        
+        return $this->db->affected_rows();
+    }
+
 }
 ?>

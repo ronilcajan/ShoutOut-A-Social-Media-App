@@ -15,7 +15,7 @@
                 <a data-target="#cover-modal" data-toggle="modal" title="Click to change cover photo" href="#cover-modal" >
                     <img class="img-fluid w-100 mt-5 h-75 cover" title="Click to change cover photo" src="<? echo base_url().'uploads/'.$profile['cover'];?>"/>
                 </a>
-                <a data-target="#profile-modal" data-toggle="modal" id="profile-pic" href="#profile-modal" >
+                <a  data-target="#profile-modal" data-toggle="modal" id="profile-pic" href="#profile-modal" >
                     <img title="Click to change profile photo" class="profile-pic rounded-circle" src="<? echo base_url().'uploads/'.$profile['image'];?>"/>
                 </a>
                 <div class="card bg-secondary ml-1 mr-1">
@@ -58,6 +58,7 @@
                 </div>
                 <? 
                 if(!empty($post)){
+                    $i = 1 ;
                 foreach($post as $k => $posts){?>
                 <div class="card bg-secondary mt-3 ml-1 mr-1">
                     <div class="card-header" style="height:75px">
@@ -69,7 +70,7 @@
                             <div class="btn-group" role="group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#edit-modal<? echo $i; ?>"  data-target="#edit-modal<? echo $i; ?>" data-toggle="modal" >Edit</a>
                                 <a class="dropdown-item" href="<? echo base_url().'delete-post/'.$posts['id'];?>">Delete</a>
                                 </div>
                             </div>
@@ -119,7 +120,42 @@
                         </div>
                     </div>
                 </div>
-                    <? }
+
+                <!-- Modal for edit post -->
+                    <div class="modal fade" id="edit-modal<? echo $i; ?>">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title font-weight-bold">Edit Post</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="<? echo base_url().'edit-submit/'.$posts['id'];?>" method="POST" enctype="multipart/form-data" id="form-edit<? echo $i; ?>">
+                                <? if(!empty($posts['post'])){?>
+                                    <div class="form-group">
+                                          <textarea class="form-control" id="post<? echo $i;?>" name='text-post'><? echo $posts['post'];?></textarea>
+                                    </div>
+                                <? } ?>
+                                    <? if(!empty($posts['post_image'])){?>
+                                        <div class="text-center w-100">
+                                            <img class="border p-1 img img-fluid" src="<? echo base_url().'uploads/'.$posts['post_image']; ?>"/>
+                                            <input type="file" class="btn btn-info" name="img-post">
+                                        </div>
+
+                                    <? }?>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <? ++$i; }
                     }else{
                     ?>
                     <div class="mt-5 w-100"><center><h5 class="text-muted font-italic font-weight-light">You don't have any shout.</h5></center></div>
@@ -129,7 +165,7 @@
                 </nav>
             </div>
         </div>
-        <div class="col-3 bg-light border-left" style="z-index:2;">
+        <div class="col-3 bg-light border-left" style="z-index:2 ;">
             <? $this->load->view('templates/sidebar');?>
         </div>
     </div>

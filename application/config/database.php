@@ -7,13 +7,14 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	// for production
-	'hostname' => 'shoutout-mysqldbserver.mysql.database.azure.com',
-	'username' => 'ron@shoutout-mysqldbserver',
+	'hostname' => 'myshoutout-mysqldbserver.mysql.database.azure.com',
+	'username' => 'mysqldbuser@myshoutout-mysqldbserver',
 	'password' => 'kagebunshin1!',
+	'database' => 'mysqldatabase42507',
 	// 'hostname' => 'localhost',
 	// 'username' => 'root',
 	// 'password' => '',
-	'database' => 'shoutout',
+	// 'database' => 'shoutout',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

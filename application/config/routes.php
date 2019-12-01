@@ -23,6 +23,7 @@ $route['shout/(:num)'] = 'shout/each_post/$1';
 $route['post-submit'] = 'shout/post_submit';
 $route['change-password'] = 'shout/change_pass';
 $route['edit-profile'] = 'shout/edit_profile';
+$route['edit-submit/(:num)'] = 'shout/edit_post/$1';
 $route['shout/home/post-submit'] = 'shout/post_submit';
 $route['delete-post/(:num)'] = 'shout/delete_post/$1/';
 $route['claps/(:num)'] = 'shout/claps/$1';
