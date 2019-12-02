@@ -24,11 +24,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // for production
-// $config['base_url'] = 'https://myshoutout.azurewebsites.net';
-// $config['index_page'] = '';
+$config['base_url'] = 'https://myshoutout.azurewebsites.net';
+$config['index_page'] = '';
 
-$config['base_url'] = 'http://localhost/shoutout';
-$config['index_page'] = 'index.php';
+// $config['base_url'] = 'http://localhost/shoutout';
+// $config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

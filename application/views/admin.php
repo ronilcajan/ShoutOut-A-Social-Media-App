@@ -13,7 +13,7 @@
 
 			<div class="card-body">
 				<div class="w-100 table-responsive">
-					<table class="table table-stripe" id="admin-table">
+					<table class="table" id="admin-table">
 						<thead>
 							<tr>
 								<td>Profile</td>

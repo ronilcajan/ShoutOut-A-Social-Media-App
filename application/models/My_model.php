@@ -17,6 +17,13 @@ class My_model extends CI_Model {
         return $result->result_array();
     }
 
+    public function get_users()
+    {   
+        $this->db->select('*');
+        $this->db->where('profile.username = accounts.username');
+        $result = $this->db->get('profile, accounts');
+        return $result->result_array();   
+    }
     public function new_user(){
         
         $this->db->limit(5);
