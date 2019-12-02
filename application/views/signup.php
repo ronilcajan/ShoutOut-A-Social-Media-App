@@ -26,9 +26,12 @@
                                     <label class="col-form-label" for="inputDefault">Confirm Password</label>
                                     <input type="password" class="form-control password1" name="password1" placeholder="Please Confirm Password" id="password1"  required>
                                 </div>
-                                <small class="mt-4 text-muted font-italic">Already have an Account?<a href="<? echo base_url();?>login" class="btn-link"> Login here</a></small>
-                                <div class="mt-3 form-group text-center">
+                                
+                                <div class="mt-5 form-group text-center">
                                     <button class="btn btn-primary rounded-pill btn-lg w-75 signup-btn">Get Started</button>
+                                </div>
+                                <div class="text-center">
+                                <small class="text-muted font-italic">Already have an Account?<a href="<? echo base_url();?>login" class="btn-link"> Login here</a></small>
                                 </div>
                             </div>
                         </div>
