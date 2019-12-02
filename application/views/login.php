@@ -18,12 +18,13 @@
                                     <label class="col-form-label" for="inputDefault">Password</label>
                                     <input type="password" title="8 or more characters" class="form-control password" name="password" placeholder="Enter Password" id="password"  required>
                                 </div>
-                                <div class="form-group">
-                                <p class="text-muted"><a href="#" class="btn-link">Forgot Password?</a></p>
-                                </div>
-                                <small class="mt-5 text-muted font-italic">Need an Account?<a href="<? echo base_url();?>signup" class="btn-link">Create here</a></small>
-                                <div class="mt-3 form-group text-center">
+                               
+                                <div class="mt-3 text-center">
                                     <button class="btn btn-primary rounded-pill btn-lg w-75 login-btn mt-5">Sign in</button>
+                                    
+                                </div>
+                                <div class="text-center mt-2">
+                                    <small class="mt-5 text-muted font-italic">Need an Account?<a href="<? echo base_url();?>signup" class="btn-link">Create here</a></small>
                                 </div>
                             </div>
                         </div>
@@ -36,5 +37,4 @@
             </div>
         </div>
     </main>
-
 </body>
