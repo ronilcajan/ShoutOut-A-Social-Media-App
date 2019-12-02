@@ -1,10 +1,10 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 pl-5 border-right">
+        <div class="col-3 pl-5 border-right nav-left">
             <? $this->load->view('templates/navs');?>
         </div>
-        <div class="col-6 pl-0 pr-0" style="background-color: #FFCCCB;">
+        <div class="col-6 pl-0 pr-0 main" style="background-color: #FFCCCB;">
             <div class="bg-secondary position-fixed home-top w-100 border-bottom" style="height:50px; z-index:1;">
                 <h4><i class="fas fa-home"></i></h4>
             </div>
@@ -18,7 +18,7 @@
                                 <img src="<? echo base_url().'uploads/'.$profile['image'];?>" class="m-1 rounded-circle border" width="65" height="60"/>
                             </div>
                             <div class="col-md-8">
-                                <textarea class="form-control post" name="post" id="exampleTextarea" rows="3" placeholder="What's on your mind?"></textarea>
+                                <textarea class="form-control post" name="post" id="exampleTextarea1" rows="3" placeholder="What's on your mind?"></textarea>
                             </div>
                             <div class="col-md-2" style="height:70px;">
                                 <label>
@@ -107,7 +107,7 @@
                 </nav>
             </div>
         </div>
-        <div class="col-3 bg-light border-left" style="z-index:2;">
+        <div class="col-3 bg-light border-left sidebar-right" style="z-index:2;">
             <? $this->load->view('templates/sidebar');?>
         </div>
     </div>

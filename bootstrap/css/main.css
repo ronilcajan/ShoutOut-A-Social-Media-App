@@ -34,3 +34,23 @@ a#profile-pic:hover {
 img.img-people:hover {
 	opacity: 0.7;
 }
+
+@media only screen and (max-width: 1024px) {
+
+	#left{
+		margin-left: -45px ;
+	}
+	.img-people{
+		height: 170px;
+		width: 120px;
+	}
+}
+@media only screen and (max-width: 375px) {
+
+	#left{
+		margin-left: -55px ;
+	}
+	.sidebar-right{
+		display: none;
+	}
+}

@@ -192,5 +192,40 @@ $(document).ready(function(e) {
 		return false;
 	});
 
+	var x = window.matchMedia("(max-width:1024px)");
+
+	myfunction(x);
+	x.addListener(myfunction);
+
+	var y= window.matchMedia("(max-width:375px)");
+
+	myfunction1(y);
+	y.addListener(myfunction1);
 
 });
+ 
+// ========= MEdia query ================
+function myfunction(x){
+	if(x.matches){
+		$('.sidebar-right').removeClass('col-3');
+		$('.sidebar-right').addClass('col-4');
+		$('.main').removeClass('col-6');
+		$('.main').addClass('col-7');
+		$('.nav-left').removeClass('col-3');
+		$('.nav-left').addClass('col-1');
+		$('.prof-text').text('');
+
+	}
+}
+function myfunction1(x){
+	if(x.matches){
+		$('.sidebar-right').removeClass('col-4');
+		// $('.sidebar-right').addClass('col-4');
+		$('.main').removeClass('col-7');
+		$('.main').addClass('col-6');
+		// $('.nav-left').removeClass('col-3');
+		// $('.nav-left').addClass('col-1');
+		// $('.prof-text').text('');
+
+	}
+}
