@@ -34,6 +34,15 @@ class Shout extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function admin(){
+        $this->check_auth('admin');
+        $data['users'] = $this->my_model->get_users();
+
+        $this->load->view('templates/header-home');
+        $this->load->view('admin', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function signup_submit(){
         
         $validation = array('success' => false, 'message' => array());
@@ -92,14 +101,22 @@ class Shout extends CI_Controller {
             $sess_data = array(
                 'username' => $response['username'],
                 'password' => $response['password'],
-                'logged_in' => TRUE,
-                'remember_me' => TRUE
+                'account_type' => $response['account_type'],
+                'logged_in' => TRUE
             );
             
-            $this->session->set_userdata($sess_data);
+            if($response['account_type'] == 'admin'){
+                $this->session->set_userdata($sess_data);
             
-            $validation['success'] = true;
-            $validation['message'] = "profile";
+                $validation['success'] = true;
+                $validation['message'] = "admin";
+            }else{
+                $this->session->set_userdata($sess_data);
+            
+                $validation['success'] = true;
+                $validation['message'] = "profile";
+            }
+            
 
         }else{
             $validation['success'] = false;

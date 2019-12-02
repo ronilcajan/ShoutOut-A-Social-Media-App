@@ -12,6 +12,7 @@ $route['signup-submit'] = 'shout/signup_submit';
 $route['login-user'] = 'shout/login_submit';
 $route['home/(:num)'] = 'shout/home/$1';
 $route['home'] = 'shout/home';
+$route['admin'] = 'shout/admin';
 $route['profile/(:num)'] = 'shout/profile/$1';
 $route['profile'] = 'shout/profile';
 $route['username/(:any)'] = 'shout/user_profile/$1';

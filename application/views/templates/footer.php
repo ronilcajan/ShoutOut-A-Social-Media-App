@@ -6,6 +6,7 @@
 <script src="<?php echo base_url(); ?>bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo base_url(); ?>bootstrap/js/toaster.min.js"></script>
 <script src="<?php echo base_url(); ?>bootstrap/js/myajax.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
 <!-- <script src="<?php echo base_url(); ?>bootstrap/js/textarea.js"></script> -->
 <script>
     $(document).ready(function() {
@@ -24,6 +25,11 @@
             else $(".okay-btn").attr("disabled", true);
         });
     });
+
+    $(document).ready( function () {
+        $('#admin-table').DataTable();
+    } );
 </script>
 </div>
+</body>
 </html>
