@@ -62,7 +62,7 @@
                             <? if($posts['comments'] == 0){?>
                             <button class="col-md-6 border-0 bg-secondary">Comments</button>
                             <?}else{?>
-                            <button class="col-md-6 border-0 bg-secondary text-primary">Comments(<? echo $posts['comments'];?>)</button>
+                            <button class="col-md-6 border-0 bg-secondary text-primary" nclick="location.href='<? echo base_url().'shout/'.$posts['id'];?>'">Comments(<? echo $posts['comments'];?>)</button>
                                 <?}?>
                         </div>
                     </div>
