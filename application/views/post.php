@@ -82,7 +82,9 @@
                 </div>
                 <?}?>
                 <?}else{?>
-                    <h3 class="font-italic text-center mt-3 text-muted">----Not found-----</h3>
+                    <div class="text-center mt-2">
+                        <small class="font-italic mt-3 text-muted">-----No comment found-----</small>
+                    </div>
                 <?}?>
             </div>
         </div>
