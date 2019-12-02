@@ -11,7 +11,7 @@ class My_model extends CI_Model {
         $this->db->from('post');
         $this->db->join('likes','post.id = likes.post_id', 'LEFT');
         $this->db->group_by('post.id');
-        $this->db->order_by('likes');
+        $this->db->order_by('likes', 'desc');
         $this->db->limit(5);
         $result = $this->db->get();
         return $result->result_array();
