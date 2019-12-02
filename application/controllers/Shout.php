@@ -435,7 +435,8 @@ class Shout extends CI_Controller {
 
             $userdata = array(
                 'username' => $this->session->userdata('username'),
-                'cover' => $data['file_name']
+                'cover' => $data['file_name'],
+                'image' => ''
             );
 
             $upload = $this->my_model->edit_profile($userdata);
