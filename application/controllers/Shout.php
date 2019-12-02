@@ -126,6 +126,9 @@ class Shout extends CI_Controller {
 
         $result = $this->my_model->get_profile($this->session->userdata('username'));
 
+        $data['trending'] = $this->my_model->get_trending_post();
+        $data['new_user'] = $this->my_model->new_user();
+        
         if(!is_null($result)){
             $data['profile'] = array(
                 'image' => $result['image']
@@ -178,6 +181,9 @@ class Shout extends CI_Controller {
 
         $data['people'] = $this->my_model->get_people();
 
+        $data['trending'] = $this->my_model->get_trending_post();
+        $data['new_user'] = $this->my_model->new_user();
+
         if(!is_null($result)){
             $data['profile'] = array(
                 'image' => $result['image']
@@ -229,6 +235,8 @@ class Shout extends CI_Controller {
             $result = $this->my_model->get_user_profile($username);
 
             $user = $this->my_model->get_profile($this->session->userdata('username'));
+            $data['trending'] = $this->my_model->get_trending_post();
+            $data['new_user'] = $this->my_model->new_user();
 
             if(!is_null($result)){
                 $data['user_profile'] = array(
@@ -290,6 +298,8 @@ class Shout extends CI_Controller {
         $data['links'] = $this->pagination->create_links();
 
         $result = $this->my_model->get_profile($this->session->userdata('username'));
+        $data['trending'] = $this->my_model->get_trending_post();
+        $data['new_user'] = $this->my_model->new_user();
 
         if(!is_null($result)){
             $data['profile'] = array(
@@ -483,6 +493,7 @@ class Shout extends CI_Controller {
         $data['people'] = $this->my_model->search_people($search);
 
         $result = $this->my_model->get_profile($this->session->userdata('username'));
+        $data['trending'] = $this->my_model->get_trending_post();
 
         if(!is_null($result)){
             $data['profile'] = array(

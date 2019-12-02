@@ -8,47 +8,30 @@
     <div class="col-md-11 mt-3 m-1 ">
         <ul class="list-group shadow-sm">
             <li class="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
-                Cras justo odio 
+                Most like post
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Dapibus ac facilisis in
-                <span class="badge badge-primary badge-pill">2</span>
+            <? foreach ($trending as $key => $trends) {
+                if($trends['post'] != ""){?>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="<? echo base_url().'shout/'.$trends['id'];?>"><? echo substr($trends['post'], 0,20);?></a>
+                    <span class="badge badge-primary badge-pill"><? echo $trends['likes'];?></span>
+                    <?}?>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <span class="badge badge-primary badge-pill">1</span>
-            </li>
+            <? } ?>
+            
         </ul>
     </div>
     <div class="col-md-11 mt-3 m-1">
         <ul class="list-group shadow-sm">
             <li class="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
-                Cras justo odio
+                New user
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Dapibus ac facilisis in
-                <span class="badge badge-primary badge-pill">2</span>
+            <? foreach ($new_user as $key => $user) {?>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="<? echo base_url().'username/'.$user['username'];?>"><? echo $user['name'];?></a>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <span class="badge badge-primary badge-pill">1</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Morbi leo risus
-                <span class="badge badge-primary badge-pill">1</span>
-            </li>
+            <? } ?>
+            
         </ul>
     </div>
     <div class="col-md-12 text-center mt-5">

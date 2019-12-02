@@ -6,6 +6,24 @@ class My_model extends CI_Model {
         $this->load->database();
     }
 
+    public function get_trending_post(){
+        $this->db->select('*, COUNT(likes.post_id) as likes');
+        $this->db->from('post');
+        $this->db->join('likes','post.id = likes.post_id', 'LEFT');
+        $this->db->group_by('post.id');
+        $this->db->order_by('likes');
+        $this->db->limit(5);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
+    public function new_user(){
+        
+        $this->db->limit(5);
+        $result = $this->db->get('profile');
+        return $result->result_array();
+    }
+
     public function add_guest($data){
         $userdata = array(
             'username' => $data['username'],
