@@ -41,7 +41,7 @@
                         <div class="row">
                             <? foreach($people as $k => $person){?>
                             <a href="<? echo base_url().'username/'.$person['username'];?>" >
-                            <img src="<? echo base_url().'/uploads/'.$person['image'];?>" class="img rounded img-people ml-3" width="140" height="200"/>
+                            <img src="<? echo base_url().'/uploads/'.$person['image'];?>" class="img rounded img-people ml-3" width="140" height="200" title="<? echo $person['name'];?>"/>
                             </a>
                             <?}?>
                         </div>
