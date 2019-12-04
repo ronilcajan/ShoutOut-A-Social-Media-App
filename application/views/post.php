@@ -26,14 +26,12 @@
                             </div>
                         <? }?>
                         <div class="row w-100 bg-danger mt-3 ml-1">
-                            <div class="col-md-6 pl-0 pr-0">
-                                <form method="post" action="<? echo base_url().'claps/'.$posts['id'];?>">                        
+                            <div class="col-md-6 pl-0 pr-0">                        
                                     <? if($posts['claps'] == 0){?>
                                         <button class="col-md-12 border-0 bg-secondary claps" type="submit">Claps</button>
                                     <? }else{ ?>
                                         <button class="col-md-12 border-0 bg-secondary claps text-primary" type="submit">Claps(<? echo $posts['claps'];?>)</button>                                   
-                                    <?}?>       
-                                </form>
+                                    <?}?>
                             </div>
                             <? if($posts['comments'] == 0){?>
                             <button class="col-md-6 border-0 bg-secondary">Comments</button>
