@@ -25,7 +25,7 @@ class My_model extends CI_Model {
         return $result->result_array();   
     }
     public function new_user(){
-        
+        $this->db->order_by('username','DESC');
         $this->db->limit(5);
         $result = $this->db->get('profile');
         return $result->result_array();
