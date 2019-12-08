@@ -27,7 +27,7 @@
                 New user
             </li>
             <?  foreach ($new_user as $key => $user) 
-                    if(!is_null($user['name'])){
+                    if(!empty($user['name'])){
             {?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <a href="<? echo base_url().'username/'.$user['username'];?>"><? echo $user['name'];?></a>
