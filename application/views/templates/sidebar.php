@@ -26,11 +26,13 @@
             <li class="list-group-item d-flex justify-content-between align-items-center font-weight-bold">
                 New user
             </li>
-            <? foreach ($new_user as $key => $user) {?>
+            <?  foreach ($new_user as $key => $user) 
+                    if(!is_null($user['name'])){
+            {?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a href="<? echo base_url().'username/'.$user['username'];?>"><? echo $user['name'];?></a>
-            </li>
-            <? } ?>
+                    <a href="<? echo base_url().'username/'.$user['username'];?>"><? echo $user['name'];?></a>
+                </li>
+            <? } } ?>
             
         </ul>
     </div>

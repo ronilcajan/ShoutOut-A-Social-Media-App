@@ -68,22 +68,30 @@
 
                     </a>
                         <div class="row w-100 bg-danger mt-3 ml-1">
-                            <div class="col-md-6 pl-0 pr-0">
-                                <form method="post" action="<? echo base_url().'claps/'.$posts['id'];?>">                        
-                                    <? if($posts['claps'] == 0){?>
-                                        <button class="col-md-12 border-0 bg-secondary claps" type="submit">Claps</button>
-                                    <? }else{ ?>
-                                        <button class="col-md-12 border-0 bg-secondary claps text-primary" type="submit">Claps(<? echo $posts['claps'];?>)</button>                                   
-                                    <?}?>       
-                                </form>
+                            <div class="col-md-6 pl-0 pr-0">                 
+                                <? if(!is_null($posts['l'])){?>
+                                    <button class="col-md-12 border-0 bg-secondary claps text-primary" type="submit">Like</button>
+                                <? }else{ ?>
+                                    <form method="post" action="<? echo base_url().'claps/'.$posts['id'];?>">
+                                        <button class="col-md-12 border-0 bg-secondary claps " type="submit">Like</button>     
+                                    </form>                              
+                                <?}?>
                             </div>
                             <? if($posts['comments'] == 0){?>
                             <button class="col-md-6 border-0 bg-secondary">Comments</button>
                             <?}else{?>
                             <button class="col-md-6 border-0 bg-secondary text-primary" onclick="location.href='<? echo base_url().'shout/'.$posts['id'];?>'">Comments(<? echo $posts['comments'];?>)</button>
                                 <?}?>
+                            </div>
+                            <div>
+                                <?  if(!is_null($posts['l'])){
+                                        if($posts['claps'] == 1){ ?> 
+                                            <p class="text-muted">You liked the post..</p>
+                                    <?} else { ?>
+                                            <p class="text-muted">You and <? echo $posts['claps'] - 1;?> others liked the post..</p>
+                                        <? }} ?>
+                            </div>
                         </div>
-                    </div>
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-md-1">

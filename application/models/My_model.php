@@ -114,16 +114,14 @@ class My_model extends CI_Model {
 
     public function search_post($limit,$start,$search){
 
-        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
-        $this->db->from('profile');
-        $this->db->join('post','profile.username = post.username');
-        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
-        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
-        $this->db->like('profile.name',$search);
-        $this->db->group_by('post.id');
-        $this->db->order_by('date','desc');
+       $user = $this->session->userdata('username');
+
+        $query = "SELECT *,(SELECT COUNT(likes.post_id) FROM likes WHERE likes.post_id = post.id) AS claps, (SELECT COUNT(comments.post_id) FROM comments WHERE comments.post_id = post.id) as comments, (SELECT likes.post_id FROM likes WHERE likes.post_id = post.id and likes.username = '$user' ) as l, profile.username as user FROM `post` JOIN profile ON profile.username = post.username LEFT JOIN likes on likes.post_id = post.id LEFT JOIN comments on comments.post_id = post.id WHERE profile.username = '$username'GROUP BY post.id ORDER BY date DESC";
+
+
         $this->db->limit($limit,$start);
-        $result = $this->db->get();
+        $result = $this->db->query($query);
+        
         return $result->result_array();
     }
     public function search_people($search){
@@ -149,16 +147,14 @@ class My_model extends CI_Model {
 
     public function get_user_post($limit,$start,$username){
 
-        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
-        $this->db->from('profile');
-        $this->db->join('post','profile.username = post.username');
-        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
-        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
-        $this->db->where('profile.username',$username);
-        $this->db->group_by('post.id');
-        $this->db->order_by('date','desc');
+        $user = $this->session->userdata('username');
+
+        $query = "SELECT *,(SELECT COUNT(likes.post_id) FROM likes WHERE likes.post_id = post.id) AS claps, (SELECT COUNT(comments.post_id) FROM comments WHERE comments.post_id = post.id) as comments, (SELECT likes.post_id FROM likes WHERE likes.post_id = post.id and likes.username = '$user' ) as l, profile.username as user FROM `post` JOIN profile ON profile.username = post.username LEFT JOIN likes on likes.post_id = post.id LEFT JOIN comments on comments.post_id = post.id WHERE profile.username = '$username' GROUP BY post.id ORDER BY date DESC";
+
+
         $this->db->limit($limit,$start);
-        $result = $this->db->get();
+        $result = $this->db->query($query);
+
         return $result->result_array();
     }
 
@@ -176,16 +172,13 @@ class My_model extends CI_Model {
 
     public function get_my_post($limit,$start,$username){
 
-        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
-        $this->db->from('profile');
-        $this->db->join('post','profile.username = post.username');
-        $this->db->join('likes', 'likes.post_id = post.id','LEFT');
-        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
-        $this->db->where('profile.username',$username);
-        $this->db->group_by('post.id');
-        $this->db->order_by('date','desc');
+        $user = $this->session->userdata('username');
+
+        $query = "SELECT *,(SELECT COUNT(likes.post_id) FROM likes WHERE likes.post_id = post.id) AS claps, (SELECT COUNT(comments.post_id) FROM comments WHERE comments.post_id = post.id) as comments, (SELECT likes.post_id FROM likes WHERE likes.post_id = post.id and likes.username = '$user' ) as l, profile.username as user FROM `post` JOIN profile ON profile.username = post.username LEFT JOIN likes on likes.post_id = post.id LEFT JOIN comments on comments.post_id = post.id WHERE profile.username = '$username'GROUP BY post.id ORDER BY date DESC";
+
+
         $this->db->limit($limit,$start);
-        $result = $this->db->get();
+        $result = $this->db->query($query);
         return $result->result_array();
     }
 
@@ -233,18 +226,13 @@ class My_model extends CI_Model {
     }
     
     public function get_post($limit, $start){
+        $user = $this->session->userdata('username');
 
-        $this->db->select('*, COUNT(likes.post_id) as claps, COUNT(comments.comment_id) as comments,profile.username as user');
-        $this->db->from('post');
-        $this->db->join('profile', 'post.username = profile.username');
-        $this->db->join('likes', 'likes.post_id=post.id','LEFT');
-        $this->db->join('comments', 'comments.post_id=post.id','LEFT');
-        $this->db->group_by('post.id');
-        $this->db->order_by('date','desc');
+        $query = "SELECT *,(SELECT COUNT(likes.post_id) FROM likes WHERE likes.post_id = post.id) AS claps, (SELECT COUNT(comments.post_id) FROM comments WHERE comments.post_id = post.id) as comments, (SELECT likes.post_id FROM likes WHERE likes.post_id = post.id and likes.username = '$user' ) as l, profile.username as user FROM `post` JOIN profile ON profile.username = post.username LEFT JOIN likes on likes.post_id = post.id LEFT JOIN comments on comments.post_id = post.id GROUP BY post.id ORDER BY date DESC";
+
         $this->db->limit($limit,$start);
-        $query = $this->db->get();
-        
-        return $query->result_array();
+        $result = $this->db->query($query);
+        return $result->result_array();
 
     }
 
