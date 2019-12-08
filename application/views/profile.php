@@ -108,7 +108,13 @@
                                             <p class="text-muted">You liked the post..</p>
                                     <?} else { ?>
                                             <p class="text-muted">You and <? echo $posts['claps'] - 1;?> others liked the post..</p>
-                                        <? }} ?>
+                                        <? }
+                                    }else if ($posts['claps'] > 0) {
+                                     ?>
+                                        <p class="text-muted"><? echo $posts['claps'] - 1;?> other liked the post..</p>
+                                    <? }else{ ?>
+                                        <p></p>
+                                    <? } ?>
                             </div>
                     </div>
                     <div class="card-footer">
