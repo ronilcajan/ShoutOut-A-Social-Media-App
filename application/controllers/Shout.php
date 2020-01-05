@@ -164,7 +164,7 @@ class Shout extends CI_Controller {
 
         $this->check_auth('home');
         
-        $config['base_url'] = base_url().'shout/home';
+        $config['base_url'] = base_url().'/home';
         $config['total_rows'] = $this->my_model->post_count();
         $config['per_page'] = 10;
         $config['uri_segment'] = "3";
@@ -513,7 +513,7 @@ class Shout extends CI_Controller {
 
         $result = $this->my_model->get_profile($this->session->userdata('username'));
         $data['trending'] = $this->my_model->get_trending_post();
-
+        $data['new_user'] = $this->my_model->new_user();
         if(!is_null($result)){
             $data['profile'] = array(
                 'image' => $result['image']

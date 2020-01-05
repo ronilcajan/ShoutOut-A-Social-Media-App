@@ -79,7 +79,7 @@
                     <div class="card-footer">
                     <div class="row">
                             <div class="col-md-1">
-                                <img class="mt-2 rounded-circle border-primary border" src="<? echo base_url().'uploads/'.$user_profile['image']; ?>" width="40" height="40"/>
+                                <img class="mt-2 rounded-circle border-primary border" src="<? echo base_url().'uploads/'.$profile['image']; ?>" width="40" height="40"/>
                             </div>
                             <div class="col-md-9">
                                 <form action="<? echo base_url().'comment/'.$posts['id'];?>" method="POST" class="w-100">

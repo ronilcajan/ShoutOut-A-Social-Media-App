@@ -67,6 +67,7 @@
                         <? }?>
 
                     </a>
+                    
                         <div class="row w-100 bg-danger mt-3 ml-1">
                             <div class="col-md-6 pl-0 pr-0">                 
                                 <? if(!is_null($posts['l'])){?>
